@@ -1,0 +1,1 @@
+PASS additional manual-no-fstab fault gate finished; owned QEMU PID2742464 absent, localhost22294 connection refused. Fresh test overlays retained for coordinator cleanup.

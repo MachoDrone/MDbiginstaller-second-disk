@@ -1,0 +1,1 @@
+STOP: fstab changed since adoption; preserving administrator edits

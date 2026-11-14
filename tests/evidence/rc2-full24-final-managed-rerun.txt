@@ -1,0 +1,24 @@
+
+Nosana installer — fresh installations only
+1) Docker prerequisites on the OS disk (default)
+2) Docker and Nosana on a second disk, including an existing /var/lib/docker mount
+Storage choice [1/2, Enter = 1]: 2
+2
+Previously configured second-disk storage verified; no formatting or migration performed.
+Previously configured second-disk storage verified; no formatting or migration performed.
+Managed Docker/containerd verified. Skipping Docker package installation; continuing unfinished setup.
+
+Docker is installed. Existing GPU drivers have not been changed.
+No working NVIDIA driver was detected. Installing a driver can require a reboot.
+Install or replace the NVIDIA driver with the recommended Ubuntu version? [y/N]: n
+n
+NVIDIA Container Toolkit is already configured; keeping it.
+Previously configured second-disk storage verified; no formatting or migration performed.
+Installing the pinned Nosana package and checking its offline cache; this can take several minutes...
+Nosana images, pinned node package and offline package cache are installed on the second disk.
+No wallet was created and no Nosana node was started. Reboot after finishing GPU installation, then use --start-nosana.
+
+Selected installation steps completed. No automatic reboot is performed.
+Log out and back in for Docker group access. Reboot when convenient if you installed a driver.
+Nosana is prepared on the second disk. After any needed reboot, start it with:
+  bash installer-beta.sh --start-nosana

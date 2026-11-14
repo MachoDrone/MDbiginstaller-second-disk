@@ -1,0 +1,3 @@
+PASS ordinary UUID fstab adoption and helper verification.
+PASS unchanged: os_partition_table, os_root_uuid, os_sentinel_sha256, data_uuid, data_files, fstab_mode, fstab_uid, fstab_gid, mount_id.
+PASS exact unrelated fstab preservation; only selected entry gained nofail/device-timeout/mount-timeout.

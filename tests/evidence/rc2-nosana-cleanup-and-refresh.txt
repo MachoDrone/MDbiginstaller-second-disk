@@ -1,0 +1,29 @@
+{
+  "officialPodmanDeclaredVolumes": {
+    "/home/podman/.local/share/containers": {},
+    "/var/lib/containers": {}
+  },
+  "actualExtraMounts": [
+    {
+      "Type": "volume",
+      "Name": "8ce5caff0c6fa7af5b943ffde706deede5cf0d49f016ceeaf351329dfd5bbe4b",
+      "Source": "/var/lib/docker/nosana-runtime/docker/volumes/8ce5caff0c6fa7af5b943ffde706deede5cf0d49f016ceeaf351329dfd5bbe4b/_data",
+      "Destination": "/home/podman/.local/share/containers",
+      "Driver": "local",
+      "Mode": "",
+      "RW": true,
+      "Propagation": ""
+    }
+  ]
+}
+All inner fixtures stopped; node definition was never started.
+Removed only registered CPU fixture outer/inner containers, network, cache, anonymous volume and directory; rc2-proof preserved.
+{
+  "fixtureOnlyRefresh": {
+    "previousHelper": "1a5dffa9fa72dfd35e950a3c11ef021a06439102595f738b0dcf4a2d2c4f9eb2",
+    "unchangedNodeImage": "sha256:f29bae0c63adcd7fafd0aa6ec722ec3b36ae7b8b1c89d80d0fbac3711ad1d4fc",
+    "unchangedRecipe": "bd105b3ab951f1e0bd3f74354f2729cd2cbc89b966e952714efeb3d020a2becc",
+    "stateWasEmpty": true
+  }
+}
+Removed only previous empty Nosana preparation fixture files. Final bundle will create fresh marker/launcher; Docker/storage unchanged.

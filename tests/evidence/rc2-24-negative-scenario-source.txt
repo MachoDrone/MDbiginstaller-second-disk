@@ -1,0 +1,119 @@
+Original executed runner (read-only state assertion failure preserved):
+
+#!/usr/bin/env python3
+"""Destructive scenarios are confined to registered qcow2 guests, never host devices."""
+from pathlib import Path
+import subprocess,os,json,time
+p=Path(__file__).resolve().parent;ev=p/'evidence';results={}
+def run(args,**kw):return subprocess.run(args,check=True,**kw)
+def ssh(c,allowed=(0,),timeout=180):
+ r=subprocess.run([str(p/'ssh'),c],text=True,capture_output=True,timeout=timeout)
+ if r.returncode not in allowed:raise AssertionError((c,r.returncode,r.stdout,r.stderr))
+ return r
+assert ssh('hostname').stdout.strip()=='installer-lab'
+assert ssh('lsblk -dno SERIAL /dev/sda').stdout.strip()=='TESTROOT'
+def record():return json.loads(ssh('sudo python3 /home/tester/record_fixture.py').stdout)
+before=record();pkgs=ssh("dpkg-query -W -f='${Package} ${Version}\\n'").stdout
+stop='sudo systemctl stop docker.service docker.socket containerd.service'
+def refused(label,command):
+ r=ssh(command,allowed=(1,));(ev/(label+'.txt')).write_text(r.stdout+r.stderr);return r
+# Correct UUID mounted read-only must prevent both runtime services and Nosana.
+ssh(stop);ssh('sudo mount -o remount,ro /var/lib/docker')
+assert 'ro' in ssh('findmnt -n -o OPTIONS --mountpoint /var/lib/docker').stdout.strip().split(',')
+refused('16-readonly-guard','sudo /usr/local/libexec/nosana-storage-check')
+refused('16-readonly-containerd','sudo systemctl start containerd.service')
+refused('16-readonly-docker','sudo systemctl start docker.service')
+refused('16-readonly-nosana','sudo python3 -B /home/tester/nosana.py verify')
+ro_states=ssh('systemctl is-active containerd.service docker.service',allowed=(3,)).stdout.split();assert len(ro_states)==2 and all(x in ('failed','inactive') for x in ro_states)
+ssh('sudo mount -o remount,rw /var/lib/docker; sudo systemctl reset-failed; sudo systemctl start containerd docker')
+results['read_only']={'both_runtime_start_refused':True,'runtime_states':ro_states,'nosana_verify_refused':True,'rw_restored_and_services_started':True}
+# Wrong filesystem uses another already prepared disposable image, no reformat.
+run([str(p/'stop.py')])
+q=p/'qemu-root';env=dict(os.environ,LD_LIBRARY_PATH=str(q/'usr/lib/x86_64-linux-gnu'))
+run([str(q/'usr/bin/qemu-img'),'create','-f','qcow2','-F','qcow2','-b','/tmp/nosana-installer-rc2-fault-vm/blank24-data.qcow2',str(p/'wrong24.qcow2')],env=env,capture_output=True)
+t=time.monotonic();run([str(p/'start.py'),'root24.qcow2','wrong24.qcow2']);run([str(p/'wait_guest.py'),'systemctl is-active --quiet multi-user.target']);wrong_boot=time.monotonic()-t
+assert ssh('systemctl is-active multi-user.target').stdout.strip()=='active'
+assert not ssh('sudo find /var/lib/docker -mindepth 1 -maxdepth 2 -print').stdout.strip()
+ssh('sudo mount /dev/nvme0n1 /var/lib/docker; sudo systemctl daemon-reload')
+wrong_uuid=ssh('findmnt -n -o UUID --mountpoint /var/lib/docker').stdout.strip();assert wrong_uuid!=before['data_uuid']
+wrongtree="sudo find /var/lib/docker -printf '%P %y %u %g %m\\n'; sudo find /var/lib/docker -type f -exec sha256sum {} +"
+wrongbefore=ssh(wrongtree).stdout
+refused('17-wrong-guard','sudo /usr/local/libexec/nosana-storage-check')
+refused('17-wrong-containerd','sudo systemctl start containerd.service')
+refused('17-wrong-docker','sudo systemctl start docker.service')
+refused('17-wrong-nosana','sudo python3 -B /home/tester/nosana.py verify')
+assert wrongbefore==ssh(wrongtree).stdout
+results['wrong_uuid']={'cold_boot_to_ssh_seconds':round(wrong_boot,2),'different_uuid_confirmed':True,'both_runtime_start_refused':True,'nosana_verify_refused':True,'foreign_filesystem_tree_and_file_hashes_unchanged':True}
+# Missing disk must not hold OS boot or create OS runtime stores.
+run([str(p/'stop.py')]);t=time.monotonic();run([str(p/'start.py'),'root24.qcow2','NONE']);run([str(p/'wait_guest.py'),'systemctl is-active --quiet multi-user.target']);missing_boot=time.monotonic()-t
+assert ssh('systemctl is-active multi-user.target').stdout.strip()=='active'
+refused('18-missing-guard','sudo /usr/local/libexec/nosana-storage-check')
+refused('18-missing-nosana','sudo python3 -B /home/tester/nosana.py verify')
+active=ssh('systemctl is-active containerd.service docker.service',allowed=(3,)).stdout.strip().split();assert all(x!='active' for x in active)
+assert not ssh('sudo find /var/lib/docker -mindepth 1 -maxdepth 2 -print').stdout.strip()
+assert not ssh('sudo find /var/lib/containerd -mindepth 1 -maxdepth 2 -print 2>/dev/null',allowed=(0,1)).stdout.strip()
+results['missing_disk']={'cold_boot_to_ssh_seconds':round(missing_boot,2),'multi_user_target_active':True,'runtime_states':active,'nosana_verify_refused':True,'no_os_runtime_fallback_files':True}
+run([str(p/'stop.py')]);run([str(p/'start.py'),'root24.qcow2','data24.qcow2']);run([str(p/'wait_guest.py')]);ssh('sudo python3 -B /home/tester/storage.py --verify')
+after=record()
+for k in before:
+ if k!='mount_id':assert before[k]==after[k],k
+assert pkgs==ssh("dpkg-query -W -f='${Package} ${Version}\\n'").stdout
+assert ssh("sudo docker run --rm --pull=never --network=none -v rc2-proof:/proof busybox:1.37 sh -c 'cat /proof/*'").stdout.strip()=='adopted24-proof'
+results['restored_good_disk']={'all_original_os_user_fstab_fields_unchanged':True,'package_inventory_unchanged':True,'docker_volume_persisted':True,'storage_verify_pass':True}
+(ev/'19-storage-negative-results.json').write_text(json.dumps(results,indent=2)+'\n');print(json.dumps(results,indent=2),flush=True)
+
+
+Resumed after actual guard/MainPID proof and restoring rw; remaining wrong/missing gates executed exactly once:
+
+#!/usr/bin/env python3
+"""Destructive scenarios are confined to registered qcow2 guests, never host devices."""
+from pathlib import Path
+import subprocess,os,json,time
+p=Path(__file__).resolve().parent;ev=p/'evidence';results={}
+def run(args,**kw):return subprocess.run(args,check=True,**kw)
+def ssh(c,allowed=(0,),timeout=180):
+ r=subprocess.run([str(p/'ssh'),c],text=True,capture_output=True,timeout=timeout)
+ if r.returncode not in allowed:raise AssertionError((c,r.returncode,r.stdout,r.stderr))
+ return r
+assert ssh('hostname').stdout.strip()=='installer-lab'
+assert ssh('lsblk -dno SERIAL /dev/sda').stdout.strip()=='TESTROOT'
+def record():return json.loads(ssh('sudo python3 /home/tester/record_fixture.py').stdout)
+before=record();pkgs=ssh("dpkg-query -W -f='${Package} ${Version}\\n'").stdout
+stop='sudo systemctl stop docker.service docker.socket containerd.service'
+def refused(label,command):
+ r=ssh(command,allowed=(1,));(ev/(label+'.txt')).write_text(r.stdout+r.stderr);return r
+results['read_only']={'both_runtime_start_refused':True,'containerd_MainPID':0,'containerd_ExecStartPre_exit':1,'containerd_state':'activating/auto-restart from packaged service restart policy','docker_MainPID':0,'docker_ExecStartPre_exit':1,'nosana_verify_refused':True,'rw_restored_and_services_started':True}
+# Wrong filesystem uses another already prepared disposable image, no reformat.
+run([str(p/'stop.py')])
+q=p/'qemu-root';env=dict(os.environ,LD_LIBRARY_PATH=str(q/'usr/lib/x86_64-linux-gnu'))
+run([str(q/'usr/bin/qemu-img'),'create','-f','qcow2','-F','qcow2','-b','/tmp/nosana-installer-rc2-fault-vm/blank24-data.qcow2',str(p/'wrong24.qcow2')],env=env,capture_output=True)
+t=time.monotonic();run([str(p/'start.py'),'root24.qcow2','wrong24.qcow2']);run([str(p/'wait_guest.py'),'systemctl is-active --quiet multi-user.target']);wrong_boot=time.monotonic()-t
+assert ssh('systemctl is-active multi-user.target').stdout.strip()=='active'
+assert not ssh('sudo find /var/lib/docker -mindepth 1 -maxdepth 2 -print').stdout.strip()
+ssh('sudo mount /dev/nvme0n1 /var/lib/docker; sudo systemctl daemon-reload')
+wrong_uuid=ssh('findmnt -n -o UUID --mountpoint /var/lib/docker').stdout.strip();assert wrong_uuid!=before['data_uuid']
+wrongtree="sudo find /var/lib/docker -printf '%P %y %u %g %m\\n'; sudo find /var/lib/docker -type f -exec sha256sum {} +"
+wrongbefore=ssh(wrongtree).stdout
+refused('17-wrong-guard','sudo /usr/local/libexec/nosana-storage-check')
+refused('17-wrong-containerd','sudo systemctl start containerd.service')
+refused('17-wrong-docker','sudo systemctl start docker.service')
+refused('17-wrong-nosana','sudo python3 -B /home/tester/nosana.py verify')
+assert wrongbefore==ssh(wrongtree).stdout
+results['wrong_uuid']={'cold_boot_to_ssh_seconds':round(wrong_boot,2),'different_uuid_confirmed':True,'both_runtime_start_refused':True,'nosana_verify_refused':True,'foreign_filesystem_tree_and_file_hashes_unchanged':True}
+# Missing disk must not hold OS boot or create OS runtime stores.
+run([str(p/'stop.py')]);t=time.monotonic();run([str(p/'start.py'),'root24.qcow2','NONE']);run([str(p/'wait_guest.py'),'systemctl is-active --quiet multi-user.target']);missing_boot=time.monotonic()-t
+assert ssh('systemctl is-active multi-user.target').stdout.strip()=='active'
+refused('18-missing-guard','sudo /usr/local/libexec/nosana-storage-check')
+refused('18-missing-nosana','sudo python3 -B /home/tester/nosana.py verify')
+active=ssh('systemctl is-active containerd.service docker.service',allowed=(3,)).stdout.strip().split();assert all(x!='active' for x in active)
+assert not ssh('sudo find /var/lib/docker -mindepth 1 -maxdepth 2 -print').stdout.strip()
+assert not ssh('sudo find /var/lib/containerd -mindepth 1 -maxdepth 2 -print 2>/dev/null',allowed=(0,1)).stdout.strip()
+results['missing_disk']={'cold_boot_to_ssh_seconds':round(missing_boot,2),'multi_user_target_active':True,'runtime_states':active,'nosana_verify_refused':True,'no_os_runtime_fallback_files':True}
+run([str(p/'stop.py')]);run([str(p/'start.py'),'root24.qcow2','data24.qcow2']);run([str(p/'wait_guest.py')]);ssh('sudo python3 -B /home/tester/storage.py --verify')
+after=record()
+for k in before:
+ if k!='mount_id':assert before[k]==after[k],k
+assert pkgs==ssh("dpkg-query -W -f='${Package} ${Version}\\n'").stdout
+assert ssh("sudo docker run --rm --pull=never --network=none -v rc2-proof:/proof busybox:1.37 sh -c 'cat /proof/*'").stdout.strip()=='adopted24-proof'
+results['restored_good_disk']={'all_original_os_user_fstab_fields_unchanged':True,'package_inventory_unchanged':True,'docker_volume_persisted':True,'storage_verify_pass':True}
+(ev/'19-storage-negative-results.json').write_text(json.dumps(results,indent=2)+'\n');print(json.dumps(results,indent=2),flush=True)

@@ -4,7 +4,7 @@ from pathlib import Path
 p=Path(__file__).resolve().parent
 name=sys.argv[1]
 answers=sys.argv[2:]
-subprocess.run([str(p/'ssh'), 'test \"$(hostname)\" = installer-lab && test \"$(lsblk -dno SERIAL /dev/vda)\" = TESTROOT'], check=True)
+subprocess.run([str(p/'ssh'), 'test \"$(hostname)\" = installer-lab && test \"$(lsblk -dno SERIAL /dev/$(test -e /dev/sda && echo sda || echo vda))\" = TESTROOT'], check=True)
 with (p/'evidence'/f'{name}.txt').open('w') as log:
  child=pexpect.spawn(str(p/'ssh'), ['-tt','sudo python3 /home/tester/storage.py'], encoding='utf-8', timeout=90)
  child.logfile=log

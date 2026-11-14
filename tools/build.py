@@ -5,10 +5,14 @@ import sys
 
 root = Path(__file__).resolve().parents[1]
 template = (root / 'src/installer.sh.in').read_text()
-helper = (root / 'src/storage.py').read_text().rstrip()
-assert template.count('@@STORAGE_PY@@') == 1
-assert '\nNOSANA_STORAGE_PY\n' not in helper
-result = template.replace('@@STORAGE_PY@@', helper)
+result = template
+for name in ('storage', 'adoption', 'nosana'):
+    helper = (root / ('src/' + name + '.py')).read_text().rstrip()
+    marker = '@@' + name.upper() + '_PY@@'
+    assert result.count(marker) == 1
+    delimiter = 'HOST' if name == 'nosana' else name.upper()
+    assert '\nNOSANA_' + delimiter + '_PY\n' not in helper
+    result = result.replace(marker, helper)
 target = root / 'installer-beta.sh'
 if sys.argv[1:] == ['--check']:
     if target.read_text() != result:

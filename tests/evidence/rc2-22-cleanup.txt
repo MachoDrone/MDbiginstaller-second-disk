@@ -1,0 +1,1 @@
+PASS all four owned QEMU PIDs exited; localhost SSH22294 refused connection (errno 111). No running guest remains. Scratch retained for coordinator joint cleanup.

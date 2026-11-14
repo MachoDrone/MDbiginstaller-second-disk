@@ -1,0 +1,2 @@
+PASS existing ext4 UUID and all operator file hashes/uid/gid/mode/symlink targets; OS UUID/partition/sentinel; fstab bytes/mode/owner all unchanged. Independent expectations come from the same immutable filesystem and pristine OS fixture, recorded before manual24 adoption.
+Harness correction: older manual24-baseline.json recorder lacked fstab_mode; comparison raised KeyError before reporting success, then used complete manual24-before.json from same baseline.

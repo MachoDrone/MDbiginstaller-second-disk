@@ -1,0 +1,1 @@
+Abrupt exit86 after durable fstab append; journal stage adopt-approved (before adopt-fstab-written).

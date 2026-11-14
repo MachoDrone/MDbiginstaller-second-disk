@@ -13,6 +13,11 @@ import sys
 import tempfile
 import uuid
 
+if __package__:
+    from . import adoption
+else:
+    import adoption
+
 MOUNT = Path('/mnt/nosana')
 DATA = MOUNT / 'nosana-runtime'
 STATE = Path('/var/lib/nosana-storage-setup/state.json')
@@ -233,7 +238,7 @@ def write_owned(state, path, content, mode=0o644):
     atomic(path, data, mode, replace=False)
 
 
-def preflight():
+def preflight(adopting=False):
     for command in ('lsblk', 'blkid', 'wipefs', 'udevadm', 'swapon', 'mkfs.ext4', 'dumpe2fs', 'systemctl', 'findmnt'):
         if not shutil.which(command):
             raise Refusal('Required Ubuntu tool missing: ' + command)
@@ -245,6 +250,8 @@ def preflight():
     if Path('/var/snap/docker').exists():
         raise Refusal('Existing Snap Docker data detected; migration is unsupported')
     for path in (Path('/var/lib/docker'), Path('/var/lib/containerd')):
+        if adopting and path == Path('/var/lib/docker'):
+            continue  # adoption.inspect independently checks the exact mount and its contents.
         if path.is_symlink() or (path.exists() and any(path.iterdir())):
             raise Refusal('Existing runtime data found at ' + str(path))
     for path in (Path('/etc/docker/daemon.json'), Path('/etc/containerd/config.toml'), UNIT, GUARD):
@@ -446,7 +453,7 @@ def existing_state():
     safe_path(STATE)
     if STATE.exists():
         state = json.loads(STATE.read_text())
-        if state.get('version') != 1:
+        if state.get('version') != 1 and not (state.get('version') == 2 and state.get('mode') == 'adopt'):
             raise Refusal('Unknown storage journal version')
         return state
     return None
@@ -496,13 +503,17 @@ def main(argv=None):
             if state and state['stage'] != 'recovered':
                 raise Refusal('A second-disk transaction already exists. Verify or recover it before changing storage choice.')
             preflight()
+            if adoption.active_mount(sys.modules[__name__]):
+                raise Refusal('A prepared Docker mount exists. Choose second-disk storage to protect all runtime data.')
             print('Fresh runtime installation preflight passed.')
             return
         if argv == ['--recover']:
             if not state:
                 raise Refusal('No storage transaction to recover')
-            return recover(state)
+            return adoption.recover(sys.modules[__name__], state) if state.get('mode') == 'adopt' else recover(state)
         if state and state['stage'] == 'complete':
+            if state.get('mode') == 'adopt':
+                return adoption.verify(sys.modules[__name__], state, start=argv != ['--list'])
             verify_configuration(state)
             if argv == ['--list']:
                 print('Second-disk storage is already configured for UUID ' + state['uuid'])
@@ -517,6 +528,9 @@ def main(argv=None):
             raise Refusal('An interrupted setup exists. Run the installer with --recover-storage first.')
         if argv == ['--verify']:
             raise Refusal('No completed second-disk setup found')
+        prepared = adoption.inspect(sys.modules[__name__])
+        if prepared:
+            return adoption.prompt(sys.modules[__name__], prepared, list_only=argv == ['--list'])
         preflight()
         choices, rejected = inventory()
         eligible = []

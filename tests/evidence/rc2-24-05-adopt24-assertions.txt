@@ -1,0 +1,1 @@
+PASS mount-ID 44 unchanged. Existing file/hash/owner/mode/symlink/UUID and OS partition/rootUUID/sentinel invariant. Only selected fstab line changed: UUID=bfb3b8e2-e545-45af-ab54-84effe00269a /var/lib/docker ext4 defaults,nofail,x-systemd.device-timeout=10s,x-systemd.mount-timeout=15s 0 2

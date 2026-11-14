@@ -1,0 +1,13 @@
+{
+  "test_environment": "Ubuntu24.04 QEMU SATA OS TESTROOT and whole NVMe TESTDATA1; localhost22293; no host disks",
+  "storage_sha256": "cf5baf32cf02ec78d196b1d935b95063cd5dcbf0ee2f987ef2b82d27a9732a0b",
+  "adoption_sha256": "42dc68ec3eea015370d627ab625bd0bde1cb9a76072e3fe0c0e90ba0895245ea",
+  "abrupt_exit_code": 86,
+  "points": [
+    "after-fstab",
+    "after-marker then guest reboot",
+    "after-containerd-config"
+  ],
+  "result": "All restore original fstab bytes/mode0640, OS/user files unchanged, no unmount during recovery, repeated recovery no-op. Administrator fstab edit causes refusal without any config/state mutations.",
+  "harness_incident": "After-marker guest reboot completed in8s, but stale host SSH command hung because command had no timeout. Added SSH ServerAliveInterval5/ServerAliveCountMax2 and15s subprocess timeout; resumed existing interrupted guest; no fault was repeated or hidden."
+}

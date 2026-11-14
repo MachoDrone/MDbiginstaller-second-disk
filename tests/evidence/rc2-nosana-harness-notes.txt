@@ -1,0 +1,1 @@
+The first final-bundle harness attempt failed in its read-only baseline status snippet: an extra closing parenthesis caused Python SyntaxError. No bundle flag was invoked and no VM state was changed. The corrected harness passes multiline Python on stdin instead of embedding a quoted one-liner. Production source unchanged.

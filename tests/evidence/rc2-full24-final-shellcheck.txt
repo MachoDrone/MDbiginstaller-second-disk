@@ -1,0 +1,2 @@
+ffed7c68885bd08aa5381c49ebb7377facba5abc76371c5ca3686a14252a3bea  /home/tester/installer-beta.sh
+ShellCheck-warning-gate-passed

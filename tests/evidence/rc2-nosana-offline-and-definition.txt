@@ -1,0 +1,151 @@
+Starting harmless npm offline-install check with network=none; node executable is not invoked.
+
+added 505 packages in 14s
+OFFLINE_PACKAGE=1.1.91
+
+{"offlineElapsedSeconds": 14.63}
+{
+  "stoppedDefinition": {
+    "Image": "7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a",
+    "ImageName": "sha256:7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a",
+    "State": {
+      "OciVersion": "1.1.0-rc.1",
+      "Status": "created",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "0001-01-01T00:00:00Z",
+      "FinishedAt": "0001-01-01T00:00:00Z",
+      "Health": {
+        "Status": "",
+        "FailingStreak": 0,
+        "Log": null
+      },
+      "CheckpointedAt": "0001-01-01T00:00:00Z",
+      "RestoredAt": "0001-01-01T00:00:00Z"
+    },
+    "Mounts": [
+      {
+        "Type": "bind",
+        "Source": "/podman.sock",
+        "Destination": "/root/.nosana/podman/podman.sock",
+        "Driver": "",
+        "Mode": "",
+        "Options": [
+          "rbind"
+        ],
+        "RW": true,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "/root/.nosana",
+        "Destination": "/root/.nosana",
+        "Driver": "",
+        "Mode": "",
+        "Options": [
+          "rbind"
+        ],
+        "RW": true,
+        "Propagation": "rprivate"
+      }
+    ],
+    "NetworkSettings": {
+      "EndpointID": "",
+      "Gateway": "",
+      "IPAddress": "",
+      "IPPrefixLen": 0,
+      "IPv6Gateway": "",
+      "GlobalIPv6Address": "",
+      "GlobalIPv6PrefixLen": 0,
+      "MacAddress": "",
+      "Bridge": "",
+      "SandboxID": "",
+      "HairpinMode": false,
+      "LinkLocalIPv6Address": "",
+      "LinkLocalIPv6PrefixLen": 0,
+      "Ports": {},
+      "SandboxKey": "",
+      "Networks": {
+        "NOSANA_GATEWAY": {
+          "EndpointID": "",
+          "Gateway": "",
+          "IPAddress": "",
+          "IPPrefixLen": 0,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "MacAddress": "",
+          "NetworkID": "NOSANA_GATEWAY",
+          "DriverOpts": null,
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": [
+            "5bc7e7dc1e3d"
+          ]
+        }
+      }
+    }
+  },
+  "Config": {
+    "Cmd": [
+      "start",
+      "--network",
+      "mainnet"
+    ],
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "container=podman",
+      "npm_config_audit=false",
+      "NODE_VERSION=22.23.4",
+      "TERM=xterm",
+      "npm_config_fund=false",
+      "NODE_ENV=production",
+      "NOSANA_NODE_VERSION=1.1.91",
+      "APP_ENV=prd",
+      "npm_config_offline=true",
+      "YARN_VERSION=1.22.22",
+      "NOSANA_START_SCRIPT_VERSION=1.1.2-3"
+    ],
+    "Labels": {
+      "io.machodrone.nosana-storage.node-version": "1.1.91",
+      "io.machodrone.nosana-storage.owner": "b7af045b506547b5ac31122ab1d1bff6",
+      "io.machodrone.nosana-storage.recipe": "bd105b3ab951f1e0bd3f74354f2729cd2cbc89b966e952714efeb3d020a2becc"
+    },
+    "Volumes": null
+  },
+  "restart": {
+    "Name": "no",
+    "MaximumRetryCount": 0
+  },
+  "network": [
+    {
+      "name": "NOSANA_GATEWAY",
+      "id": "66f26f19370c399d3997a22882a74be10444e68ab133bd52a80168de9b2e9984",
+      "driver": "bridge",
+      "network_interface": "podman1",
+      "created": "2026-11-14T03:07:08.242090078Z",
+      "subnets": [
+        {
+          "subnet": "192.168.101.0/24",
+          "gateway": "192.168.101.1"
+        }
+      ],
+      "ipv6_enabled": false,
+      "internal": false,
+      "dns_enabled": true,
+      "labels": {
+        "io.machodrone.nosana-storage.owner": "b7af045b506547b5ac31122ab1d1bff6"
+      },
+      "ipam_options": {
+        "driver": "host-local"
+      }
+    }
+  ]
+}
+PASS: production-shaped inner container remained unstarted; no wallet files exist.

@@ -1,0 +1,24 @@
+3.21: Pulling from library/alpine
+871d48e9bf6b: Pulling fs layer
+55971c3da804: Download complete
+3544a6103257: Download complete
+871d48e9bf6b: Download complete
+871d48e9bf6b: Pull complete
+Digest: sha256:bc21487101ae47172509130ee1092cc273a831968d64b617776d1f69c81e42ab
+Status: Downloaded newer image for alpine:3.21
+docker.io/library/alpine:3.21
+
+{
+  "result": "PASS",
+  "docker_root": "/var/lib/docker/nosana-runtime/docker",
+  "containerd_root": "/var/lib/docker/nosana-runtime/containerd",
+  "volume_mountpoint": "/var/lib/docker/nosana-runtime/docker/volumes/rc2-22-proof/_data",
+  "all_storage_uuid": "5c6a0a2e-7cb6-439f-a079-cee5901c34a5",
+  "image": [
+    "alpine@sha256:bc21487101ae47172509130ee1092cc273a831968d64b617776d1f69c81e42ab"
+  ],
+  "packages": "containerd.io 2.4.2-4~ubuntu.22.04~jammy\ndocker-ce 5:29.9.3-1~ubuntu.22.04~jammy\ndocker-ce-cli 5:29.9.3-1~ubuntu.22.04~jammy\n",
+  "runtime_usage": "244K\t/var/lib/docker/nosana-runtime/docker\n12M\t/var/lib/docker/nosana-runtime/containerd\n",
+  "services": "active\nactive\n"
+}
+Adopted Docker storage verified; no formatting or migration performed.

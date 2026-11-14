@@ -1,0 +1,15 @@
+{
+  "elapsed_seconds": 31.17,
+  "final_managed_rerun_exit": 0,
+  "packages_unchanged": true,
+  "boot_unchanged_during_rerun": true,
+  "all_four_normal_user_flags_exit": 0,
+  "temporary_extraction_cleanup_exact": true,
+  "shellcheck_warning_gate": true,
+  "later_cold_reboot_new_boot_id": true,
+  "prepared_nosana_verifies_after_reboot": true,
+  "volume_proof_persisted": true,
+  "operator_files_os_fstab_unchanged_after_final_reboot": true,
+  "package_inventory_sha256": "b126645a3891b0dfaf934fceb044a9de1e826c762fbb3e89d960aa816485ebbe",
+  "exact_bundle_sha256": "ffed7c68885bd08aa5381c49ebb7377facba5abc76371c5ca3686a14252a3bea"
+}

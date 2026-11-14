@@ -1,0 +1,42 @@
+{
+  "recorded_utc": "2026-11-14T03:09:46.257276+00:00",
+  "status": "final local and VM gates passed; publication checked separately",
+  "sha256": {
+    "src/storage.py": "cf5baf32cf02ec78d196b1d935b95063cd5dcbf0ee2f987ef2b82d27a9732a0b",
+    "src/adoption.py": "42dc68ec3eea015370d627ab625bd0bde1cb9a76072e3fe0c0e90ba0895245ea",
+    "src/nosana.py": "37492424c62db3a52ad285656cb6a6135a771e14371e061637552623e9d898d2",
+    "installer-beta.sh": "ffed7c68885bd08aa5381c49ebb7377facba5abc76371c5ca3686a14252a3bea"
+  },
+  "local_gate": {
+    "command": "python3 -m unittest discover -s tests -q",
+    "passed": 200,
+    "reported_seconds": 1.957,
+    "bash_syntax": "passed",
+    "generated_artifact": "passed",
+    "diff_whitespace": "source/docs/tests/tools passed; raw terminal evidence preserves carriage returns/progress spacing",
+    "extracted_helpers_byte_identical_and_compile": "passed"
+  },
+  "reviews": {
+    "adoption": "independent bounded review,53 tests; no outstanding findings",
+    "nosana": "independent storage/resume boundary review; observed runtime contract corrections reviewed separately;28 scoped tests"
+  },
+  "physical_gpu_or_live_node_tested": false,
+  "previous_candidate": {
+    "sha256": {
+      "src/storage.py": "cf5baf32cf02ec78d196b1d935b95063cd5dcbf0ee2f987ef2b82d27a9732a0b",
+      "src/adoption.py": "42dc68ec3eea015370d627ab625bd0bde1cb9a76072e3fe0c0e90ba0895245ea",
+      "src/nosana.py": "1a5dffa9fa72dfd35e950a3c11ef021a06439102595f738b0dcf4a2d2c4f9eb2",
+      "installer-beta.sh": "ac22ecd72491d3772884c88efcd77103f328bcc9418e6467e0604b8ec6727be9"
+    },
+    "local_gate": {
+      "command": "python3 -m unittest discover -s tests -q",
+      "passed": 197,
+      "reported_seconds": 8.174,
+      "bash_syntax": "passed",
+      "generated_artifact": "passed",
+      "diff_whitespace": "passed",
+      "extracted_helpers_byte_identical_and_compile": "passed"
+    },
+    "reason_changed": "Real Podman API tests exposed Docker29 manifest versus config image IDs and an implicit image volume; only Nosana launch/identity functions changed."
+  }
+}

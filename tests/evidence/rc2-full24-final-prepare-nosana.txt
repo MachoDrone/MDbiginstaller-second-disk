@@ -1,0 +1,2 @@
+Previously configured second-disk storage verified; no formatting or migration performed.
+Nosana software already prepared; no services or node were started.

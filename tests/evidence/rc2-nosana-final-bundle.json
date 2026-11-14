@@ -1,0 +1,43 @@
+{
+  "bundleSha256": "ffed7c68885bd08aa5381c49ebb7377facba5abc76371c5ca3686a14252a3bea",
+  "helperSha256": "37492424c62db3a52ad285656cb6a6135a771e14371e061637552623e9d898d2",
+  "reusedImage": "sha256:f29bae0c63adcd7fafd0aa6ec722ec3b36ae7b8b1c89d80d0fbac3711ad1d4fc",
+  "checks": [
+    {
+      "mode": "--prepare-nosana",
+      "exit": 0,
+      "elapsedSeconds": 1.754
+    },
+    {
+      "mode": "--verify-nosana",
+      "exit": 0,
+      "elapsedSeconds": 0.734
+    },
+    {
+      "mode": "--prepare-nosana",
+      "exit": 0,
+      "elapsedSeconds": 0.894
+    },
+    {
+      "mode": "--verify-nosana",
+      "exit": 0,
+      "elapsedSeconds": 0.809
+    }
+  ],
+  "before": {
+    "tempDirs": [],
+    "containers": [],
+    "volumes": [
+      "rc2-proof"
+    ]
+  },
+  "after": {
+    "tempDirs": [],
+    "containers": [],
+    "volumes": [
+      "rc2-proof"
+    ]
+  },
+  "noNewTemporaryDirs": true,
+  "nosanaNodeStarted": false
+}

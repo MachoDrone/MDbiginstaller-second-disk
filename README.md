@@ -1,37 +1,47 @@
-# Nosana installer: second-disk option
+# Nosana + Docker on a second disk
 
-A tested release candidate based on [MDbiginstaller](https://github.com/MachoDrone/MDbiginstaller).
-For **fresh Docker installations on native Ubuntu 22.04/24.04**. Requires Internet,
-`curl`, and a normal user with sudo access. It prepares host prerequisites; it does
-not install the Nosana node itself.
+For **fresh installs on native x86-64 Ubuntu 22.04/24.04**, based on
+[MDbiginstaller](https://github.com/MachoDrone/MDbiginstaller).
+Docker/containerd data, Nosana state and workload caches use the second disk.
+Ubuntu packages and NVIDIA drivers stay in their normal OS locations.
 
-## Run
+## Install
+
+Run as your normal Ubuntu user with sudo access (`curl` required):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/MachoDrone/MDbiginstaller-second-disk/v0.1.0-rc1/installer-beta.sh -o installer-beta.sh && bash installer-beta.sh
+curl -fsSL https://raw.githubusercontent.com/MachoDrone/MDbiginstaller-second-disk/v0.1.0-rc2/installer-beta.sh -o installer-beta.sh && bash installer-beta.sh
 ```
 
-1. Choose **2** for second-disk storage, then select the intended drive.
-2. Type its displayed confirmation: **ERASE** formats an eligible blank disk;
-   **USE** preserves an eligible existing ext4 filesystem.
-3. Answer **y** to package installation and **NVIDIA Container Toolkit** for GPU hosting.
-   Working drivers are kept; driver installation is a separate prompt.
+1. Choose **2** and check the displayed drive identity.
+2. **USE** preserves an eligible ext4 filesystem, including one already mounted
+   at `/var/lib/docker`. **ERASE** formats an eligible blank disk.
+3. Accept package installation and NVIDIA Container Toolkit. Install a driver
+   if needed; working drivers are kept.
 
-Run as your normal user—do not put `sudo` before `bash`.
+Everything is prepared **before any required driver reboot**. No automatic reboot
+or Nosana network activation occurs. After any needed reboot:
 
-## Protection and testing
+```bash
+bash installer-beta.sh --start-nosana
+```
 
-OS disks, busy/unsupported disks, and existing Docker installations are refused.
-There is no automatic system upgrade or reboot. A missing data disk blocks Docker
-startup while allowing Ubuntu to boot.
+Use this launcher to retain the selected storage paths. It checks GPU readiness
+and asks before starting registration/qualification and signed account setup.
 
-Passed **113 automated checks**, **15 interruption/recovery scenarios**, and real
-Ubuntu 22.04/24.04 VM tests. Physical GPU driver installation was not tested.
-[Test details and limitations](docs/VERIFICATION.md).
+## Checks and recovery
 
-To verify storage: `bash installer-beta.sh --verify-storage`.
-For interrupted setup before Docker installation: `bash installer-beta.sh --recover-storage`.
+OS disks and existing unmanaged runtime installations are refused. Missing or
+wrong storage blocks runtime startup while allowing Ubuntu to boot.
+
+- `--verify-storage`: check disk and runtime configuration.
+- `--verify-nosana`: check prepared Nosana software.
+- `--prepare-nosana`: resume Nosana preparation.
+- `--recover-storage`: recover interrupted storage setup before runtime installation.
+
 Recovery cannot undo formatting or roll back a completed installation.
-
-[Copy-ready Discord post](docs/DISCORD-POST.md). Other inherited installer scripts
-are unchanged; use only `installer-beta.sh` for this feature.
+[Verification and limitations](docs/VERIFICATION-RC2.md) ·
+[Discord post](docs/DISCORD-POST.md).
+200 automated checks and Ubuntu 22.04/24.04 VM tests passed; physical GPU/job
+qualification remains unverified.
+Use `installer-beta.sh`; inherited scripts do not provide this feature.

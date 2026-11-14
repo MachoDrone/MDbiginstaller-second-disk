@@ -1,0 +1,31 @@
+{
+  "completedUTC": "2026-11-14T03:13:26.206294+00:00",
+  "helperSha256": "37492424c62db3a52ad285656cb6a6135a771e14371e061637552623e9d898d2",
+  "bundleSha256": "ffed7c68885bd08aa5381c49ebb7377facba5abc76371c5ca3686a14252a3bea",
+  "scope": "CPU-only image transfer, offline npm install, stopped production inner definition, final helper predicates, repeated final bundle flags and cleanup",
+  "sourceChanges": [
+    "verify_outer: validated official implicit anonymous volume",
+    "inner_image: Docker manifest/config ID mapping",
+    "verify_inner: explicit resolved config identity",
+    "start: use resolved config identity"
+  ],
+  "recipeAndPackagesChanged": false,
+  "imageTransferSeconds": 49.35,
+  "offlineInstallSeconds": 14.63,
+  "offlinePackageVersion": "1.1.91",
+  "installedPackages": 505,
+  "nodeExecutableInvoked": false,
+  "nodeCreatedButNeverStarted": true,
+  "GPUQualificationTested": false,
+  "walletCreated": false,
+  "cleanup": "owned fixtures removed; no Docker containers; rc2-proof volume preserved; VM22292 live returned to vm_verification",
+  "evidence": [
+    "rc2-nosana-transfer-initial.txt",
+    "rc2-nosana-api-identities.txt",
+    "rc2-nosana-offline-and-definition.txt",
+    "rc2-nosana-final-predicates.txt",
+    "rc2-nosana-cleanup-and-refresh.txt",
+    "rc2-nosana-final-bundle.json",
+    "rc2-nosana-handoff.txt"
+  ]
+}

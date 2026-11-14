@@ -1,0 +1,2 @@
+Nosana images, pinned node package and offline package cache are installed on the second disk.
+No wallet was created and no Nosana node was started. Reboot after finishing GPU installation, then use --start-nosana.

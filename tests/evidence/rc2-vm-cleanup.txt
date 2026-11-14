@@ -1,0 +1,19 @@
+Final owned VM processes and localhost listeners verified stopped. No host services/packages/disks were modified. All containers were disposable guest fixtures; no Nosana node was started. Scratch retained until coordinator records evidence and removes the full COW baseline chain.
+[
+  {
+    "scratch": "/tmp/nosana-installer-rc2-vm",
+    "last_verified_qemu_pid": 2747008,
+    "process_alive": false,
+    "localhost_ssh_port": 22292,
+    "port_listening": false,
+    "scratch_retained_for_coordinator_cleanup": true
+  },
+  {
+    "scratch": "/tmp/nosana-installer-rc2-fault-vm",
+    "last_verified_qemu_pid": 2745130,
+    "process_alive": false,
+    "localhost_ssh_port": 22293,
+    "port_listening": false,
+    "scratch_retained_for_coordinator_cleanup": true
+  }
+]

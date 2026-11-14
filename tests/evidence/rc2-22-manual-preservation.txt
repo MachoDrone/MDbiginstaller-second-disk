@@ -1,0 +1,4 @@
+PASS immediate preservation: os_partition_table, os_root_uuid, os_sentinel_sha256, data_uuid, data_files, fstab_mode, fstab_uid, fstab_gid, mount_id
+PASS unrelated fstab bytes preserved exactly; exactly one safe UUID mount entry appended.
+UUID=5c6a0a2e-7cb6-439f-a079-cee5901c34a5 /var/lib/docker ext4 defaults,nofail,x-systemd.device-timeout=10s,x-systemd.mount-timeout=15s 0 2
+PASS after runtime installation and correct-disk reboot: os_partition_table, os_root_uuid, os_sentinel_sha256, data_uuid, data_files, fstab_mode, fstab_uid, fstab_gid. Adopted fstab unchanged.

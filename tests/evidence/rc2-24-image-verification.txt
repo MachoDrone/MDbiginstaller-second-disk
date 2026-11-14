@@ -1,0 +1,2 @@
+Ubuntu24 SHA256 04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94 matches official noble/current/SHA256SUMS
+Ubuntu22 SHA256 f77bc6d59cb8deaa9657095736b5f5003f7705b47055f01823459715c967de6a matches official jammy/current/SHA256SUMS

@@ -1,0 +1,1 @@
+Prepared Nosana software and second-disk placement verified; no node was started.

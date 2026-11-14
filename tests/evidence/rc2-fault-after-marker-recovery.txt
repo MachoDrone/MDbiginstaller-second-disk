@@ -1,0 +1,10 @@
+Original fstab restored; adopted disk remains mounted and existing files were preserved.
+Rollback restores the original boot behavior, including any previously required data-disk mount.
+Adoption was already recovered; no changes made.
+{
+  "reboot_id": "7d003349-e929-444f-a222-192b1d361e68",
+  "mount_id_before_recovery": "44",
+  "mount_id_after_recovery": "44",
+  "fstab_mode": "0o640",
+  "all_original_data_and_os_fields_exact": true
+}

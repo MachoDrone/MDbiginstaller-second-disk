@@ -1,0 +1,6 @@
+Prepared disk at /var/lib/docker: /dev/nvme0n1 | 128.0 GiB | QEMU NVMe Ctrl | ID nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001
+Adopt this existing mount without formatting or moving files.
+Its fstab entry will use the verified UUID and allow Ubuntu to boot if the disk is absent.
+Type exactly "USE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001" to adopt it, or Enter to cancel: USE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001
+USE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001
+Existing Docker mount adopted. No formatting or unmounting; existing files preserved.

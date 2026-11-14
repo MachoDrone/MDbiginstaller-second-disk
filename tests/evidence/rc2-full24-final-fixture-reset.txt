@@ -1,0 +1,7 @@
+{
+  "stage": "complete",
+  "node_id": "sha256:3d9fac3393e2da315ae3967145e26c84928bd6a8fdde3a6a94decf0f9875bbd1",
+  "recipe_sha256": "481124ba4568c497f9c1db4c3005060d3517ebd393e1f89ea786f556b8918758",
+  "launcher_sha256": "1a5dffa9fa72dfd35e950a3c11ef021a06439102595f738b0dcf4a2d2c4f9eb2"
+}
+Removed only prior owned derived-image tag and empty generated Nosana files; pinned base images/cache retained. Storage adoption/OS/operator files untouched.

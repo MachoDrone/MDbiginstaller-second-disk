@@ -1,0 +1,1 @@
+STOP: /usr/local/libexec/nosana-storage-check failed: Nosana storage unavailable; refusing to write on the OS disk: mount type/options

@@ -1,0 +1,13 @@
+Prepared Nosana software and second-disk placement verified; no node was started.
+{
+  "currentHelper": "37492424c62db3a52ad285656cb6a6135a771e14371e061637552623e9d898d2",
+  "currentBundle": "ffed7c68885bd08aa5381c49ebb7377facba5abc76371c5ca3686a14252a3bea",
+  "preparedStage": "complete",
+  "walletStateEmpty": true,
+  "fixtureDirectoryAbsent": true,
+  "containers": [],
+  "preservedVolumes": [
+    "rc2-proof"
+  ],
+  "VMRunning": true
+}

@@ -1,0 +1,10 @@
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/nvme0n1 | 32.0 GiB | QEMU NVMe Ctrl | ID nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001 | ERASE and create ext4
+Excluded /dev/sda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001" to continue: ERASE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001
+ERASE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001
+Selected disk formatted as requested; Docker and containerd storage configured and verified.

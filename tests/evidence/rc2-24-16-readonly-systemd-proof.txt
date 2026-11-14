@@ -1,0 +1,14 @@
+MainPID=0
+Result=exit-code
+ExecStartPre={ path=/sbin/modprobe ; argv[]=/sbin/modprobe overlay ; ignore_errors=yes ; start_time=[Sat 2026-11-14 03:14:55 UTC] ; stop_time=[Sat 2026-11-14 03:14:55 UTC] ; pid=10155 ; code=exited ; status=0 }
+ExecStartPre={ path=/usr/local/libexec/nosana-storage-check ; argv[]=/usr/local/libexec/nosana-storage-check ; ignore_errors=no ; start_time=[Sat 2026-11-14 03:14:55 UTC] ; stop_time=[Sat 2026-11-14 03:14:55 UTC] ; pid=10156 ; code=exited ; status=1 }
+Id=containerd.service
+ActiveState=activating
+SubState=auto-restart
+
+MainPID=0
+Result=exit-code
+ExecStartPre={ path=/usr/local/libexec/nosana-storage-check ; argv[]=/usr/local/libexec/nosana-storage-check ; ignore_errors=no ; start_time=[Sat 2026-11-14 03:14:08 UTC] ; stop_time=[Sat 2026-11-14 03:14:08 UTC] ; pid=10032 ; code=exited ; status=1 }
+Id=docker.service
+ActiveState=failed
+SubState=failed

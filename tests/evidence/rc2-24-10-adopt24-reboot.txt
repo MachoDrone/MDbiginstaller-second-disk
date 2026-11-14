@@ -1,0 +1,2 @@
+Adopted Docker storage verified; no formatting or migration performed.
+

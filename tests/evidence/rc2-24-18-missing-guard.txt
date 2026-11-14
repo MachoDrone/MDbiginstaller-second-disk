@@ -1,0 +1,1 @@
+Nosana storage unavailable; refusing to write on the OS disk: Command '['/usr/bin/findmnt', '--json', '--mountpoint', '/var/lib/docker', '--output', 'TARGET,UUID,FSTYPE,OPTIONS,FSROOT']' returned non-zero exit status 1.

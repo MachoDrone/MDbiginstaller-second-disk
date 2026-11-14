@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "boot_id": "5b18a382-40f2-41a8-8bb4-abfe7f7087c3",
+  "checks": {
+    "docker_start": {
+      "exit": 1,
+      "elapsed_seconds": 3.091,
+      "stdout": "",
+      "stderr": "A dependency job for docker.service failed. See 'journalctl -xe' for details.\n"
+    },
+    "docker_state": "inactive",
+    "containerd_start": {
+      "exit": 1,
+      "elapsed_seconds": 10.242,
+      "stdout": "",
+      "stderr": "A dependency job for containerd.service failed. See 'journalctl -xe' for details.\n"
+    },
+    "containerd_state": "inactive",
+    "storage_verify": {
+      "exit": 1,
+      "stdout": "",
+      "stderr": "STOP: systemctl failed: A dependency job for var-lib-docker.mount failed. See 'journalctl -xe' for details.\n"
+    }
+  },
+  "root_fallback_directory_empty": true,
+  "os_partition_table": "label: gpt\nlabel-id: AA448360-4459-44D8-B1D8-F4BB38609891\ndevice: /dev/sda\nunit: sectors\nfirst-lba: 34\nlast-lba: 25165790\nsector-size: 512\n\n/dev/sda1 : start=      227328, size=    24938463, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4, uuid=E17951D4-1E54-4716-8037-D6FA769F556F\n/dev/sda14 : start=        2048, size=        8192, type=21686148-6449-6E6F-744E-656564454649, uuid=AD3960A2-EB64-4CB3-9537-902B652B4975\n/dev/sda15 : start=       10240, size=      217088, type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B, uuid=A79E56DD-69EB-4C4C-BE5F-3F8D742E50DF\n",
+  "os_root_uuid": "9a8092ee-1a0a-4970-9329-d782248ddf59",
+  "os_sentinel_sha256": "f8be3ea1ceb80a9f5ede1e5da1e596733c7d082fed3833a06afcdeae8b033fbb",
+  "fstab": "LABEL=cloudimg-rootfs\t/\t ext4\tdiscard,errors=remount-ro\t0 1\nLABEL=UEFI\t/boot/efi\tvfat\tumask=0077\t0 1\nUUID=5c6a0a2e-7cb6-439f-a079-cee5901c34a5 /var/lib/docker ext4 defaults,nofail,x-systemd.device-timeout=10s,x-systemd.mount-timeout=15s 0 2\n"
+}

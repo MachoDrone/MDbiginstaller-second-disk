@@ -1,0 +1,2 @@
+Original fstab restored; adopted disk remains mounted and existing files were preserved.
+Rollback restores the original boot behavior, including any previously required data-disk mount.

@@ -1,0 +1,16 @@
+{
+  "active_qemu_pids": [],
+  "localhost_connection_results": {
+    "22292": 111,
+    "22293": 111,
+    "22294": 111
+  },
+  "allocated_bytes": {
+    "/tmp/nosana-installer-rc2-vm": 14914228224,
+    "/tmp/nosana-installer-rc2-fault-vm": 6797656064,
+    "/tmp/nosana-installer-rc2-ubuntu22-vm": 1752420352
+  },
+  "allocated_total_bytes": 23464304640,
+  "status": "removed and all three paths verified absent",
+  "removed_utc": "2026-11-14T03:19:28.085384+00:00"
+}

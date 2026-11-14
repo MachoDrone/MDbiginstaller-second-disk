@@ -1,0 +1,24 @@
+{
+  "result": "PASS",
+  "fault_point": "real atomic fstab replacement completed and fsynced; os._exit(86) before journal stage update",
+  "injected_exit": 86,
+  "interrupted_stage": "adopt-approved",
+  "recovery_runs": 2,
+  "exact_raw_fstab_restored": true,
+  "fstab_mode_preserved": "0o644",
+  "mount_id_unchanged": "585",
+  "data_uuid_preserved": "5c6a0a2e-7cb6-439f-a079-cee5901c34a5",
+  "entire_fixture_record_equals_baseline_after_each_recovery": true,
+  "no_format_unmount_evidence": "Same mount ID and filesystem UUID at baseline, interruption, recovery1 and recovery2; all independent existing files and OS sentinel/table preserved.",
+  "elapsed_gate_seconds": 5.54,
+  "source_sha256": {
+    "storage.py": "cf5baf32cf02ec78d196b1d935b95063cd5dcbf0ee2f987ef2b82d27a9732a0b",
+    "adoption.py": "42dc68ec3eea015370d627ab625bd0bde1cb9a76072e3fe0c0e90ba0895245ea"
+  },
+  "cleanup": {
+    "owned_qemu_pid_absent": 2742464,
+    "ssh_port": 22294,
+    "connection_refused_errno": 111,
+    "scratch": "retained for coordinator joint cleanup"
+  }
+}

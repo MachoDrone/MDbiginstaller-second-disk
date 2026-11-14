@@ -1,0 +1,5 @@
+Expected previous-helper refusal: Prepared Nosana belongs to a different installer; use that same installer to verify or start it
+PASS real imported image resolution: sha256:7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a
+PASS real unstarted inner definition through final verifier; no fields normalized.
+PASS actual anonymous-volume shape/path through final outer verifier. Normalized CPU-fixture Cmd/owner label/persistence bind source only; GPU activation untested.
+PASS no wallet; production-shaped node remains created/stopped.

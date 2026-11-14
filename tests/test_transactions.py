@@ -175,6 +175,7 @@ class ConfirmationTests(unittest.TestCase):
             stack.enter_context(patch.object(storage.fcntl, "flock"))
             stack.enter_context(patch.dict(os.environ))
             stack.enter_context(patch.object(storage, "existing_state", return_value=None))
+            stack.enter_context(patch.object(storage.adoption, "inspect", return_value=None))
             stack.enter_context(patch.object(storage, "preflight"))
             stack.enter_context(patch.object(storage, "inventory", return_value=([selected], [])))
             stack.enter_context(patch.object(storage, "probe"))

@@ -1,0 +1,36 @@
+{"imageExistsArgument": "sha256:f29bae0c63adcd7fafd0aa6ec722ec3b36ae7b8b1c89d80d0fbac3711ad1d4fc", "exit": 1, "stderr": ""}
+{"imageInspectArgument": "sha256:f29bae0c63adcd7fafd0aa6ec722ec3b36ae7b8b1c89d80d0fbac3711ad1d4fc", "exit": 125, "stderr": "Error: inspecting object: sha256:f29bae0c63adcd7fafd0aa6ec722ec3b36ae7b8b1c89d80d0fbac3711ad1d4fc: image not known"}
+{"imageExistsArgument": "sha256:7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a", "exit": 0, "stderr": ""}
+{
+  "imageInspectArgument": "sha256:7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a",
+  "Id": "7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a",
+  "Digest": "sha256:f29bae0c63adcd7fafd0aa6ec722ec3b36ae7b8b1c89d80d0fbac3711ad1d4fc",
+  "RepoDigests": [],
+  "Config": {
+    "Volumes": null,
+    "Entrypoint": [
+      "node",
+      "dist/src/index.js"
+    ],
+    "Cmd": null,
+    "WorkingDir": "/nosana"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:05f9043663c0a4a3f7a75f1fe7cf08b5a69419f2e31425412598b5443e1887bc",
+      "sha256:74a1cce49db916676932c971e576f97b650bfdb55e355ee56d3b022d4c01ad1f",
+      "sha256:131853779658ab455b50696ca52922ea83febf8922703598ea672657331befbc",
+      "sha256:425acb6907fb99cde300a0ee88d416fd72a6a60315a9b777aaf84d842d88a288",
+      "sha256:da559d607cb735038fd1a910ada4f36adc0af273dbf4ad268ff15fb59d304d15",
+      "sha256:1df0345cd38b3425e3f3caf51a5f7b36ad4179929f6fdda910bd49443dd666e5",
+      "sha256:c959775107d01b36bd254b8f0d8b19a4bd56ce41c899d88f20f377bb26be1dfb",
+      "sha256:694baef8e3bac4ea8eef405494f6a211c19605da72ab511c380fb232c86d4089",
+      "sha256:ab9c95b1d41e4ca8013751a9164f566e87a2c164e0d8b1a5d49c6139e541f562",
+      "sha256:5c339dbe943a1855994ab33b1800ec1b8e67b8ab7c757b86c760c0cc625eb592",
+      "sha256:243b57d7690770291b0be95ec2ab4a4c192d15bac67b5e73da3d4410fc77a5cf",
+      "sha256:299294a1b7f498b6740f738b631e07af43590085df570197289f40029055b011",
+      "sha256:1e5eb6ae952fb3e5b0827267d42ca826eb6be5790245e754fd55da46915c696d"
+    ]
+  }
+}

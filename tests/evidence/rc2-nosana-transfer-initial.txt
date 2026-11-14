@@ -1,0 +1,50 @@
+{
+  "saveExit": 0,
+  "loadExit": 0,
+  "loadStdout": "Loaded image: sha256:7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a\n",
+  "loadStderr": "Getting image source signatures\nCopying blob sha256:69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0\nCopying blob sha256:338554e9113fa6731ba588cb8f45e85b3e3fe7ada531ee7d7b0bc9291d616727\nCopying blob sha256:d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d\nCopying blob sha256:9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16\nCopying blob sha256:ce928160acb370b400e80d751c4cc636c8d8aaa2c7dc9eca43dc34fb4caea60a\nCopying blob sha256:3fe3f62c854cbfe7b60f8388e62928b630211be6530577406687c4d2d47dd74d\nCopying blob sha256:a7a274b00007d50a1285234696199c5508d99f993dbd7dfcc051fc24951ca513\nCopying blob sha256:65779781643c0f8cfb215ca7c6427852ee7b572a59697dd8fc9893a9310a4993\nCopying blob sha256:6c32c002626752ee7e7f761968f4736b0fd1e8ed157ae9c97e04bd8de052ac01\nCopying blob sha256:79f52b860383c35f2a88bffcd3fea63ffa65b2de3c7217d1db0755840152be5e\nCopying blob sha256:2c0e4e5585f6ecf479a1515179d8625b935d3b19ad44ac28f3c4c6d633e78028\nCopying blob sha256:9e43f5092655f6bfb2e8be936a0299bcdc4147b9cc68e2007956cac478b4d941\nCopying blob sha256:63e2075459c284ddfa48c2acb7da2217fb606870851d86019d309d85d6701cee\nCopying config sha256:7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a\nWriting manifest to image destination\nStoring signatures\n",
+  "archiveManifest": [
+    {
+      "Config": "blobs/sha256/7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a",
+      "RepoTags": null,
+      "Layers": [
+        "blobs/sha256/69245854ad5855991d16224f6abf55855d2d73922785206adea9c5c5988434a0",
+        "blobs/sha256/338554e9113fa6731ba588cb8f45e85b3e3fe7ada531ee7d7b0bc9291d616727",
+        "blobs/sha256/d6c30932f8d3f5798b438cce12cdf6cebb1717b52f51e22ff010b4d86667031d",
+        "blobs/sha256/9bab93d346cda15207e5a5000093cee7256ec1092fb689ec3d2997faf31b9a16",
+        "blobs/sha256/ce928160acb370b400e80d751c4cc636c8d8aaa2c7dc9eca43dc34fb4caea60a",
+        "blobs/sha256/3fe3f62c854cbfe7b60f8388e62928b630211be6530577406687c4d2d47dd74d",
+        "blobs/sha256/a7a274b00007d50a1285234696199c5508d99f993dbd7dfcc051fc24951ca513",
+        "blobs/sha256/65779781643c0f8cfb215ca7c6427852ee7b572a59697dd8fc9893a9310a4993",
+        "blobs/sha256/6c32c002626752ee7e7f761968f4736b0fd1e8ed157ae9c97e04bd8de052ac01",
+        "blobs/sha256/79f52b860383c35f2a88bffcd3fea63ffa65b2de3c7217d1db0755840152be5e",
+        "blobs/sha256/2c0e4e5585f6ecf479a1515179d8625b935d3b19ad44ac28f3c4c6d633e78028",
+        "blobs/sha256/9e43f5092655f6bfb2e8be936a0299bcdc4147b9cc68e2007956cac478b4d941",
+        "blobs/sha256/63e2075459c284ddfa48c2acb7da2217fb606870851d86019d309d85d6701cee"
+      ]
+    }
+  ],
+  "elapsedSeconds": 49.35
+}
+[
+    {
+        "Id": "7e9fe4c99053c089562e9d32414a691fc434eb8d8978ceef37191efc95eae50a",
+        "ParentId": "",
+        "RepoTags": null,
+        "RepoDigests": [],
+        "Size": 1509868869,
+        "SharedSize": 0,
+        "VirtualSize": 1509868869,
+        "Labels": {
+            "io.machodrone.nosana-storage.node-version": "1.1.91",
+            "io.machodrone.nosana-storage.owner": "b7af045b506547b5ac31122ab1d1bff6",
+            "io.machodrone.nosana-storage.recipe": "bd105b3ab951f1e0bd3f74354f2729cd2cbc89b966e952714efeb3d020a2becc"
+        },
+        "Containers": 0,
+        "Dangling": true,
+        "Digest": "sha256:f29bae0c63adcd7fafd0aa6ec722ec3b36ae7b8b1c89d80d0fbac3711ad1d4fc",
+        "Created": 1794624785,
+        "CreatedAt": "2026-11-14T02:53:05Z"
+    }
+]
+

@@ -1,0 +1,44 @@
+{
+  "read_only": {
+    "both_runtime_start_refused": true,
+    "containerd_MainPID": 0,
+    "containerd_ExecStartPre_exit": 1,
+    "containerd_state": "activating/auto-restart from packaged service restart policy",
+    "docker_MainPID": 0,
+    "docker_ExecStartPre_exit": 1,
+    "nosana_verify_refused": true,
+    "rw_restored_and_services_started": true
+  },
+  "wrong_uuid": {
+    "cold_boot_to_ssh_seconds": 16.32,
+    "different_uuid_confirmed": true,
+    "both_runtime_start_refused": true,
+    "nosana_verify_refused": true,
+    "foreign_filesystem_tree_and_file_hashes_unchanged": true,
+    "mount_before_start_attempts": "/dev/nvme0n1 mounted explicitly at /var/lib/docker with sudo mount; daemon-reload; findmnt UUID asserted different from original before starts",
+    "guard_specific_refusal": "mount identity"
+  },
+  "missing_disk": {
+    "cold_boot_to_ssh_seconds": 16.12,
+    "multi_user_target_active": true,
+    "runtime_states": [
+      "inactive",
+      "inactive"
+    ],
+    "nosana_verify_refused": true,
+    "no_os_runtime_fallback_files": true,
+    "guard_specific_refusal": "findmnt exact /var/lib/docker mountpoint absent"
+  },
+  "restored_good_disk": {
+    "all_original_os_user_fstab_fields_unchanged": true,
+    "package_inventory_unchanged": true,
+    "docker_volume_persisted": true,
+    "storage_verify_pass": true
+  },
+  "candidate": {
+    "bundle": "ffed7c68885bd08aa5381c49ebb7377facba5abc76371c5ca3686a14252a3bea",
+    "storage": "cf5baf32cf02ec78d196b1d935b95063cd5dcbf0ee2f987ef2b82d27a9732a0b",
+    "adoption": "42dc68ec3eea015370d627ab625bd0bde1cb9a76072e3fe0c0e90ba0895245ea",
+    "nosana": "37492424c62db3a52ad285656cb6a6135a771e14371e061637552623e9d898d2"
+  }
+}

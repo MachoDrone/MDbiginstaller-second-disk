@@ -1,0 +1,38 @@
+{
+  "result": "PASS",
+  "scope": "Ubuntu22 manual existing ext4 mount adoption, real runtime placement, correct/missing data disk boot; ordinary-fstab fresh fixture smoke",
+  "source_sha256": {
+    "storage.py": "cf5baf32cf02ec78d196b1d935b95063cd5dcbf0ee2f987ef2b82d27a9732a0b",
+    "adoption.py": "42dc68ec3eea015370d627ab625bd0bde1cb9a76072e3fe0c0e90ba0895245ea"
+  },
+  "ubuntu": "22.04.5 LTS",
+  "topology": "SATA TESTROOT OS; secondary whole NVMe TESTDATA1 ext4; regular writable qcow2 overlays only",
+  "start_utc": "2026-11-14T02:50:19.169715+00:00",
+  "end_utc": "2026-11-14T02:57:20.744125+00:00",
+  "elapsed_seconds": 421.6,
+  "gates": {
+    "manual_adoption_no_fstab_before": true,
+    "same_mount_id_during_adoption": true,
+    "only_one_safe_uuid_fstab_entry_appended": true,
+    "original_files_permissions_symlink_lost_found_preserved": true,
+    "data_uuid_preserved": true,
+    "os_table_root_uuid_sentinel_preserved": true,
+    "docker_and_containerd_actual_roots_on_selected_disk": true,
+    "alpine_container_volume_write_read_on_selected_disk": true,
+    "correct_disk_cold_boot_services_and_persisted_volume": true,
+    "missing_disk_cold_boot_ssh_available_services_refuse": true,
+    "missing_disk_no_root_runtime_fallback": true,
+    "ordinary_fstab_adoption_exact_unrelated_bytes_preserved": true,
+    "guest_stopped_and_port_released": true
+  },
+  "packages": {
+    "docker-ce": "5:29.9.3-1~ubuntu.22.04~jammy",
+    "containerd.io": "2.4.2-4~ubuntu.22.04~jammy"
+  },
+  "failures": [],
+  "limitations": [
+    "Disposable QEMU guest, no physical NVMe hardware claim",
+    "No GPU or Nosana activation",
+    "Storage helper tested directly; bundle end-to-end evidence owned separately"
+  ]
+}

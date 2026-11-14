@@ -1,0 +1,2 @@
+Adopted Docker storage verified; no formatting or migration performed.
+Prepared Nosana software and second-disk placement verified; no node was started.
