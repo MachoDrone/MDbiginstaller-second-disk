@@ -1,0 +1,182 @@
+Actual successful rerun transcripts
+Frozen helper SHA256:f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50
+
+--- stage:approved ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+Selected disk formatted as requested; Docker and containerd storage configured and verified.
+
+--- stage:formatting ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+Selected disk formatted as requested; Docker and containerd storage configured and verified.
+
+--- after-mkfs ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- stage:filesystem-ready ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- journal-before-unit ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after:unit ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- stage:mounting ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after-mount ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- stage:creating-data-directories ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after:marker ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after:guard ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after:docker-dropin ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after:containerd-dropin ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after:docker-config ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- after:containerd-config ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE TESTDATA1" to continue: USE TESTDATA1
+USE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.

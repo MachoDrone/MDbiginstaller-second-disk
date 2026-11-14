@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+lab_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec ssh -i "$lab_dir/test_key" -p "${NOSANA_VM_PORT:-22292}" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o ConnectTimeout=10 tester@127.0.0.1 "$@"

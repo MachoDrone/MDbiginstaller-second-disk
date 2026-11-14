@@ -1,0 +1,182 @@
+Actual process-death transcripts
+Frozen helper SHA256:f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50
+
+--- stage:approved ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at stage:approved
+
+--- stage:formatting ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at stage:formatting
+
+--- after-mkfs ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after-mkfs
+
+--- stage:filesystem-ready ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at stage:filesystem-ready
+
+--- journal-before-unit ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at journal-before-unit
+
+--- after:unit ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after:unit
+
+--- stage:mounting ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at stage:mounting
+
+--- after-mount ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after-mount
+
+--- stage:creating-data-directories ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at stage:creating-data-directories
+
+--- after:marker ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after:marker
+
+--- after:guard ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after:guard
+
+--- after:docker-dropin ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after:docker-dropin
+
+--- after:containerd-dropin ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after:containerd-dropin
+
+--- after:docker-config ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after:docker-config
+
+--- after:containerd-config ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+TEST: forced process death at after:containerd-config

@@ -1,0 +1,6 @@
+934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d  /home/tester/installer-beta.sh
+15081b5aede08c06b6898e306dc8edfd04d7832d833d4c7ad7e4a42a298079d8  /home/tester/storage.py
+ShellCheck - shell script analysis tool
+version: 0.9.0
+license: GNU General Public License, version 3
+website: https://www.shellcheck.net

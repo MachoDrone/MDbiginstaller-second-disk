@@ -1,0 +1,13 @@
+name: Installer checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit, refusal, recovery, and bundle tests (no privileged disk operations)
+        run: python3 -m unittest discover -s tests -v
+      - name: Shell lint
+        run: shellcheck -S warning installer-beta.sh

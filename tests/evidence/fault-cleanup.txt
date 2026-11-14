@@ -1,0 +1,4 @@
+Fault VM cleanly shut down. QEMU PID2702678 no longer exists; localhost:22293 refuses connections.
+All15 matrix cases also stopped their individual guests before snapshot reset.
+Scratch /tmp/nosana-installer-fault-vm is deliberately retained only for coordinator joint cleanup; no process needs it. Images, fixtures, test-key symlink and helper symlinks may now be removed. Shared backing snapshots/QEMU/key targets belong to the main VM owner and were not altered.
+Evidence retained in tests/evidence/fault-*.txt; sanitized reproduction runner tests/run_vm_fault_matrix.py.

@@ -1,0 +1,284 @@
+Real disposable VM interruption matrix — 2026-11-13 America/New_York
+
+Ubuntu 24.04.5 LTS; QEMU KVM; separate 12 GiB TESTROOT and 128 GiB TESTDATA1 image-file disks.
+Frozen storage helper SHA256: f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50
+15/15 boundaries passed. Every test used normal interactive disk selection and typed ERASE TESTDATA1.
+Each case began from the same stopped, clean root/data snapshots. No Docker runtime was installed.
+Every injected process death returned86. Recovery ran successfully twice, then normal setup reran successfully.
+After-marker and after-containerd-config cases rebooted the guest before recovery.
+All13 cases with an already-created filesystem reused it without changing its UUID and retained an injected existing-file sentinel.
+The first2 cases had not formatted the disk, so their subsequent successful setup appropriately created the filesystem.
+Every case compared OS fstab bytes, root partition table, root filesystem UUID and OS sentinel before/after recovery and after rerun.
+Elapsed matrix execution:367.6 seconds (26.2 first case +341.4 remaining14); excludes fixture/package preparation.
+These are real process-termination/reboot tests, not a claim to have tested arbitrary physical power-loss or hardware failures.
+
+
+{
+  "point": "stage:approved",
+  "crash_exit": 86,
+  "journal_stage": "approved",
+  "prepared_uuid": null,
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=df7e5e8d-e1a2-4b41-9bb6-8db9f43555ee; existing_filesystem_preserved=False
+
+{
+  "point": "stage:formatting",
+  "crash_exit": 86,
+  "journal_stage": "formatting",
+  "prepared_uuid": null,
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=45626908-92d4-411a-8ffc-52c6808e1202; existing_filesystem_preserved=False
+
+{
+  "point": "after-mkfs",
+  "crash_exit": 86,
+  "journal_stage": "formatting",
+  "prepared_uuid": "c8f999ae-166a-4e07-8214-63e56cf47358",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=c8f999ae-166a-4e07-8214-63e56cf47358; existing_filesystem_preserved=True
+
+{
+  "point": "stage:filesystem-ready",
+  "crash_exit": 86,
+  "journal_stage": "filesystem-ready",
+  "prepared_uuid": "e03f88e4-f9f7-4370-8f8d-59e2fc72d256",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=e03f88e4-f9f7-4370-8f8d-59e2fc72d256; existing_filesystem_preserved=True
+
+{
+  "point": "journal-before-unit",
+  "crash_exit": 86,
+  "journal_stage": "filesystem-ready",
+  "prepared_uuid": "eccd0420-d5fe-4fc6-94f8-1f401dc84cbb",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=eccd0420-d5fe-4fc6-94f8-1f401dc84cbb; existing_filesystem_preserved=True
+
+{
+  "point": "after:unit",
+  "crash_exit": 86,
+  "journal_stage": "filesystem-ready",
+  "prepared_uuid": "75c0efa7-7a45-4633-b3c0-92f118323699",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=75c0efa7-7a45-4633-b3c0-92f118323699; existing_filesystem_preserved=True
+
+{
+  "point": "stage:mounting",
+  "crash_exit": 86,
+  "journal_stage": "mounting",
+  "prepared_uuid": "596fdbe1-ada0-4b44-8881-eff028442ba5",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=596fdbe1-ada0-4b44-8881-eff028442ba5; existing_filesystem_preserved=True
+
+{
+  "point": "after-mount",
+  "crash_exit": 86,
+  "journal_stage": "mounting",
+  "prepared_uuid": "340e6b61-b682-44e5-a265-c855a40df63e",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=340e6b61-b682-44e5-a265-c855a40df63e; existing_filesystem_preserved=True
+
+{
+  "point": "stage:creating-data-directories",
+  "crash_exit": 86,
+  "journal_stage": "creating-data-directories",
+  "prepared_uuid": "d00b3714-cb5c-4f4e-bcbd-9f7ebfed8feb",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=d00b3714-cb5c-4f4e-bcbd-9f7ebfed8feb; existing_filesystem_preserved=True
+
+{
+  "point": "after:marker",
+  "crash_exit": 86,
+  "journal_stage": "creating-data-directories",
+  "prepared_uuid": "29a5fb25-6f51-4f43-9653-d05d6f5f156c",
+  "rebooted_before_recovery": true,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=29a5fb25-6f51-4f43-9653-d05d6f5f156c; existing_filesystem_preserved=True
+
+{
+  "point": "after:guard",
+  "crash_exit": 86,
+  "journal_stage": "creating-data-directories",
+  "prepared_uuid": "d700312b-5427-40ce-b0a7-c46582ed785c",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=d700312b-5427-40ce-b0a7-c46582ed785c; existing_filesystem_preserved=True
+
+{
+  "point": "after:docker-dropin",
+  "crash_exit": 86,
+  "journal_stage": "creating-data-directories",
+  "prepared_uuid": "53321b4d-fe34-45a5-abbd-3b9a0a04032b",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=53321b4d-fe34-45a5-abbd-3b9a0a04032b; existing_filesystem_preserved=True
+
+{
+  "point": "after:containerd-dropin",
+  "crash_exit": 86,
+  "journal_stage": "creating-data-directories",
+  "prepared_uuid": "9c5ac475-9608-422b-ab24-8aa56d62344f",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=9c5ac475-9608-422b-ab24-8aa56d62344f; existing_filesystem_preserved=True
+
+{
+  "point": "after:docker-config",
+  "crash_exit": 86,
+  "journal_stage": "creating-data-directories",
+  "prepared_uuid": "19d9a3be-2712-425d-926a-2db81e8259b6",
+  "rebooted_before_recovery": false,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=19d9a3be-2712-425d-926a-2db81e8259b6; existing_filesystem_preserved=True
+
+{
+  "point": "after:containerd-config",
+  "crash_exit": 86,
+  "journal_stage": "creating-data-directories",
+  "prepared_uuid": "89f274c4-6679-4d4d-a7e7-d60ba8b5a743",
+  "rebooted_before_recovery": true,
+  "repeated_recovery": "pass",
+  "os_preserved": true,
+  "rerun": "pass",
+  "source_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50"
+}
+Recorded configuration removed. Disk filesystems and existing files were not erased.
+A filesystem created during the previous attempt remains on the selected disk.
+This interrupted transaction was already recovered. No changes made.
+PASS recovered; all recorded configuration absent
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS complete; UUID=89f274c4-6679-4d4d-a7e7-d60ba8b5a743; existing_filesystem_preserved=True

@@ -1,0 +1,25 @@
+--- full22-tested-helper-f63a
++++ final-helper-15081b5a
+@@ -117,12 +117,20 @@
+         path = Path(filename)
+         if path.exists():
+             for line in path.read_text().splitlines():
+-                fields = line.split('#', 1)[0].split()
++                if line.lstrip().startswith('#'):
++                    continue
++                fields = line.split()
+                 if fields:
+                     value = fields[1] if filename.endswith('crypttab') and len(fields) > 1 else fields[0]
++                    # fstab escapes bytes; systemd's crypttab parser does not.
++                    # Decode fstab once, then remove one tag-value quote pair.
++                    if filename.endswith('fstab'):
++                        value = os.fsdecode(re.sub(rb'\\([0-7]{3})', lambda match: bytes([int(match[1], 8)]), os.fsencode(value)))
+                     if '=' in value:
+                         key, val = value.split('=', 1)
+-                        value = key + '=' + val.strip('"\'')
++                        if len(val) >= 2 and val[0] in ('"', "'") and val[-1] == val[0]:
++                            val = val[1:-1]
++                        value = key + '=' + val
+                     refs.add(value)
+                     if value.startswith('/dev/'):
+                         refs.add(os.path.realpath(value))

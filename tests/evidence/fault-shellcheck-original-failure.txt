@@ -1,0 +1,11 @@
+ShellCheck - shell script analysis tool
+version: 0.9.0
+license: GNU General Public License, version 3
+website: https://www.shellcheck.net
+
+In /home/tester/installer-beta.sh line 659:
+    read -r -p 'Install or replace the NVIDIA driver with Ubuntu’s recommended version? [y/N]: ' answer
+                                                                ^-- SC1112 (warning): This is a unicode quote. Delete and retype it (or ignore/doublequote for literal).
+
+For more information:
+  https://www.shellcheck.net/wiki/SC1112 -- This is a unicode quote. Delete a...

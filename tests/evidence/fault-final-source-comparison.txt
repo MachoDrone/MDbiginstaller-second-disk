@@ -1,0 +1,5 @@
+Frozen fault-tested source SHA256:f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50
+Final source SHA256:15081b5aede08c06b6898e306dc8edfd04d7832d833d4c7ad7e4a42a298079d8
+Final bundle SHA256:934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d
+Independent AST comparison: inventory is the only changed top-level function; all remaining module syntax is identical ignoring source locations.
+Mutation, recovery, guard, confirmation, runtime verification and low-level probe code are unchanged. The15fault results remain applicable to those unchanged paths.

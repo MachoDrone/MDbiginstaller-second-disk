@@ -1,0 +1,163 @@
+Real disposable Ubuntu 24.04.5 LTS / QEMU8.2.2 KVM observations, 2026-11-13 America/New_York.
+Initial helper SHA256 e7a47c895fb864047105e989677435334cd494ab049b6b202bd8ca9f4730fcce.
+Initial blank-disk configuration/runtime/missing-drive tests used this development helper.
+Final artifact verification is recorded separately; frozen-source fault tests are separate fault-* evidence.
+All drives are qcow2 files; root serial TESTROOT, spare serial TESTDATA1. No physical disks passed through.
+
+--- 04-list.txt ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+
+--- 05-cancel.txt ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel:
+
+STOP: Cancelled; nothing was changed
+
+--- 06-wrong-confirmation.txt ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE WRONG
+ERASE WRONG
+STOP: Confirmation did not match; nothing was changed
+
+--- 07-blank-disk-setup.txt ---
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/vdb | 128.0 GiB | unknown model | ID TESTDATA1 | ERASE and create ext4
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+WARNING: formatting destroys any data on this selected disk, including data our probes cannot recognize.
+Type exactly "ERASE TESTDATA1" to continue: ERASE TESTDATA1
+ERASE TESTDATA1
+Storage configured and verified. Existing files on the disk were preserved.
+
+--- 09-docker-runtime.txt ---
+active
+active
+29.9.3
+containerd containerd v2.4.2 b7a25261e029d68978bbf290df0a62fc819b3c51
+/mnt/nosana/nosana-runtime/docker overlayfs [["driver-type","io.containerd.snapshotter.v1"]]
+time="2026-11-14T01:21:22Z" level=warning msg="Configuration migrated from version 2, use `containerd config migrate` to avoid migration" t="6.609µs"
+version = 4
+root = '/mnt/nosana/nosana-runtime/containerd'
+state = '/run/containerd'
+temp = ''
+disabled_plugins = []
+required_plugins = []
+oom_score = 0
+imports = ['/etc/containerd/conf.d/*.toml']
+
+[debug]
+  level = ''
+  format = ''
+Previously configured second-disk storage verified; no formatting or migration performed.
+Unable to find image 'busybox:1.37' locally
+1.37: Pulling from library/busybox
+68fe9bff2ad4: Pulling fs layer
+9177639ff916: Download complete
+68fe9bff2ad4: Download complete
+68fe9bff2ad4: Pull complete
+Digest: sha256:a7dbc319b1438115a207e11930dc4bb3e643dcb3ec0bdd694bb36cd8fad289ec
+Status: Downloaded newer image for busybox:1.37
+second-disk-proof[
+    {
+        "CreatedAt": "2026-11-14T01:21:24Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/mnt/nosana/nosana-runtime/docker/volumes/storage-proof/_data",
+        "Name": "storage-proof",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+244K	/mnt/nosana/nosana-runtime/docker
+6.8M	/mnt/nosana/nosana-runtime/containerd
+
+--- 11-reboot-present.txt ---
+Previously configured second-disk storage verified; no formatting or migration performed.
+31f39396-a57f-4a34-bacb-250e4a146a0c
+
+
+--- 12-disk-absent.txt ---
+active
+Result=success
+Id=docker.service
+ActiveState=inactive
+SubState=dead
+
+Result=success
+Id=containerd.service
+ActiveState=inactive
+SubState=dead
+
+Result=success
+Id=mnt-nosana.mount
+ActiveState=inactive
+SubState=dead
+Nov 14 01:23:29 installer-lab systemd[1]: mnt-nosana.mount: Job mnt-nosana.mount/start timed out.
+Nov 14 01:23:29 installer-lab systemd[1]: Timed out mounting mnt-nosana.mount - Nosana dedicated Docker storage.
+Nov 14 01:23:29 installer-lab systemd[1]: mnt-nosana.mount: Job mnt-nosana.mount/start failed with result 'timeout'.
+PASS-OS-booted-runtimes-stopped-no-fallback-data
+
+--- 13-wrong-disk.txt ---
+STOP: Storage is missing, wrong, or read-only
+Job for containerd.service failed because the control process exited with error code.
+See "systemctl status containerd.service" and "journalctl -xeu containerd.service" for details.
+TARGET      SOURCE   FSTYPE OPTIONS
+/mnt/nosana /dev/vdb ext4   rw,relatime
+Nov 14 01:24:39 installer-lab systemd[1]: Dependency failed for containerd.service - containerd container runtime.
+Nov 14 01:24:39 installer-lab systemd[1]: containerd.service: Job containerd.service/start failed with result 'dependency'.
+Nov 14 01:24:47 installer-lab systemd[1]: Starting containerd.service - containerd container runtime...
+Nov 14 01:24:47 installer-lab nosana-storage-check[1051]: Nosana storage unavailable; refusing to write on the OS disk: mount identity
+Nov 14 01:24:47 installer-lab systemd[1]: containerd.service: Control process exited, code=exited, status=1/FAILURE
+Nov 14 01:24:47 installer-lab systemd[1]: containerd.service: Failed with result 'exit-code'.
+Nov 14 01:24:47 installer-lab systemd[1]: Failed to start containerd.service - containerd container runtime.
+PASS-wrong-filesystem-refused-no-runtime-data
+
+--- 14-marker-guard.txt ---
+Job for containerd.service failed because the control process exited with error code.
+See "systemctl status containerd.service" and "journalctl -xeu containerd.service" for details.
+Previously configured second-disk storage verified; no formatting or migration performed.
+PASS-marker-required-and-recovery-preserves-volume
+
+--- Final bundle 68322466cb350d5bc868893330359eb8c2e516396199b166358b2761504893c4 verification on managed24 ---
+Previously configured second-disk storage verified; no formatting or migration performed.
+/mnt/nosana/nosana-runtime/docker overlayfs
+OS baseline exact comparison passed again. Existing container-volume sentinel read successfully; default OS-disk roots absent.
+
+--- DELIVERED artifact934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d focused final gate ---
+934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d  /home/tester/installer-beta.sh
+Previously configured second-disk storage verified; no formatting or migration performed.
+
+{
+  "ubuntu": "24.04.5",
+  "bundle_sha256": "934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d",
+  "verify_exit": 0,
+  "managed_rerun_exit": 0,
+  "package_state_unchanged": true,
+  "os_baseline_unchanged": true,
+  "volume_sentinel": "second-disk-proof",
+  "default_os_roots_absent": true
+}
+
+Nosana installer — fresh installations only
+1) Keep Docker storage on the OS disk (default)
+2) Set up a spare disk for Docker storage
+Storage choice [1/2, Enter = 1]: 2
+2
+Previously configured second-disk storage verified; no formatting or migration performed.
+Previously configured second-disk storage verified; no formatting or migration performed.
+Docker/containerd already exists. Storage verified; no package upgrades or driver changes will be made.
+Both commands exit0. Package-state bytes unchanged, original OS baseline exact, existing container volume sentinel retained, no default OS-disk data roots. VM cleanly stopped afterward.

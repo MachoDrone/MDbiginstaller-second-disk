@@ -1,0 +1,22 @@
+[
+  {
+    "ubuntu": "24.04.5",
+    "bundle_sha256": "934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d",
+    "verify_exit": 0,
+    "managed_rerun_exit": 0,
+    "package_state_unchanged": true,
+    "os_baseline_unchanged": true,
+    "volume_sentinel": "second-disk-proof",
+    "default_os_roots_absent": true
+  },
+  {
+    "ubuntu": "22.04.5",
+    "bundle_sha256": "934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d",
+    "verify_exit": 0,
+    "managed_rerun_exit": 0,
+    "package_state_unchanged": true,
+    "os_baseline_unchanged": true,
+    "volume_sentinel": "ubuntu22-proof",
+    "default_os_roots_absent": true
+  }
+]

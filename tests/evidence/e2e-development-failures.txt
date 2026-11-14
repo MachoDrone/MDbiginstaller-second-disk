@@ -1,0 +1,37 @@
+Preserved development failures and their evidence levels:
+
+1. Initial helper SHA2567e48f7abbd06a50739d4ca05472d20e9366d18c4319facc23e65249cefac2fe0, real Ubuntu24 --list: exit1, "swapon: unrecognized option --json". No disk mutation. Corrected to supported raw NAME output; next actual list succeeded, subsequent blank setup/cancel/runtime tests passed.
+
+2. Wrapper code required an exactly double-quoted containerd root line. Actual containerd2.4.2 config dump emitted version4 and root = '/mnt/nosana/nosana-runtime/containerd'. This mismatch was discovered from real output before running the full wrapper; no failed wrapper execution is claimed for this issue. Replaced with validation accepting both valid TOML quote forms. Real Ubuntu22 full flow subsequently reached Docker/root verification and toolkit completion.
+
+3. Test controller supplied USE TESTDATA1 to NVMe selection reporting its WWN. Wizard correctly refused and left original UUID/state untouched. Corrected fixture confirmation and retained negative transcript below.
+
+4. Test controller waited for older exact optional-driver prompt. Original installer remained alive; intended n/y inputs were delivered to its disposable guest TTY, and original invocation completed. Controller expectation then saw EOF and returned1. Final verify/rerun passed independently. See e2e-ubuntu22.txt for exact distinction. No driver was installed.
+
+--- 01-list-failure.txt ---
+Candidate SHA256: 7e48f7abbd06a50739d4ca05472d20e9366d18c4319facc23e65249cefac2fe0
+Ubuntu 24.04.5 LTS actual VM
+Command: sudo python3 /home/tester/storage.py --list
+Exit 1
+STOP: swapon failed: swapon: unrecognized option --json
+No virtual disk mutation performed.
+
+--- 17a-ubuntu22-wrong-nvme-confirmation.txt ---
+
+Nosana installer — fresh installations only
+1) Keep Docker storage on the OS disk (default)
+2) Set up a spare disk for Docker storage
+Storage choice [1/2, Enter = 1]: 2
+2
+
+Available secondary disks (system disks and busy disks are excluded):
+1: /dev/nvme0n1 | 128.0 GiB | QEMU NVMe Ctrl | ID nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001" to continue: USE TESTDATA1
+USE TESTDATA1
+STOP: Confirmation did not match; nothing was changed
+
+Installation stopped on line 606. Read the error above; no automatic reboot will occur.

@@ -1,0 +1,145 @@
+Real disposable Ubuntu22.04.5 LTS / QEMU8.2.2 KVM, 2026-11-13 America/New_York.
+Full user-entrypoint bundle SHA256 fb2226d30cfa0e62ae24c2fa67bf13d0fb0f0dd4d647c40862d3c9e45b236b18.
+Embedded helper SHA256 f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50.
+Selected existing GPT single-partition NVMe ext4; package install yes, GPU driver no, NVIDIA toolkit yes.
+Versions observed: Docker29.9.3, containerd2.4.2, NVIDIA Container Toolkit1.20.2.
+Actual CPU container (busybox:1.37 digest sha256:a7dbc319b1438115a207e11930dc4bb3e643dcb3ec0bdd694bb36cd8fad289ec) wrote/read named-volume sentinel ubuntu22-proof.
+DockerRootDir=/mnt/nosana/nosana-runtime/docker; containerd snapshotter root=/mnt/nosana/nosana-runtime/containerd.
+NVIDIA runtime JSON was added while data-root remained unchanged. No GPU driver installation or GPU job was tested.
+
+Harness distinction: first guessed serial confirmation was refused because this NVMe reports a WWN; same FS UUID and no state file remained. Correct observed WWN was then supplied.
+The controller later expected an outdated driver prompt. The ORIGINAL live installer process was kept running; its test-only guest terminal received n/y answers through guest-root TIOCSTI. That same invocation completed toolkit configuration and reached the script's final success text. The old controller returned an EOF exception because its expected prompt never appeared; this was a test-controller failure, not a new installer invocation or a successful controller exit. The reusable controller now matches the driver prompt independent of wording. Final artifact verify and managed rerun were separately observed exit0.
+
+Selected original full-invocation transcript:
+Nosana installer — fresh installations only
+Storage choice [1/2, Enter = 1]: 2
+1: /dev/nvme0n1 | 128.0 GiB | QEMU NVMe Ctrl | ID nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001 | Reuse ext4; preserve existing files
+Excluded /dev/vda: Contains a mounted filesystem or active swap
+Choose a disk number, or press Enter to cancel: 1
+This will add dedicated runtime directories; it will not format the filesystem.
+Type exactly "USE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001" to continue: USE nvme.1b36-544553544441544131-51454d55204e564d65204374726c-00000001
+Storage configured and verified. Existing files on the disk were preserved.
+Continue with package installation? [y/N]: y
+Previously configured second-disk storage verified; no formatting or migration performed.
+Docker 29.9.3 — storage /mnt/nosana/nosana-runtime/docker
+No working NVIDIA driver was detected. Installing a driver can require a reboot.
+Install or replace the NVIDIA driver with Ubuntu’s recommended version? [y/N]: n
+Install NVIDIA Container Toolkit for GPU containers? [y/N]: y
+INFO[0000] Loading config from /etc/docker/daemon.json
+INFO[0000] Wrote updated config to /etc/docker/daemon.json
+Previously configured second-disk storage verified; no formatting or migration performed.
+Selected installation steps completed. No automatic reboot is performed.
+Log out and back in for Docker group access. Reboot when convenient if you installed a driver.
+This installer prepares the host; it does not launch a Nosana node or prove GPU job readiness.
+
+--- 15-nvme-data-baseline.txt ---
+43ffa269d803a22998c8807a6797dc57f096a9452d068bb60eff61a8ebb3fdc4  keep.txt
+d74ac0a903abd6c241a47e7c759dbcd9641268dbab1797077553c919e0233083  my files/preserved.bin
+keep.txt 1000:1000 640 44
+my files/preserved.bin 0:0 644 15
+keep.txt
+c9dd2fb6-23f1-4adc-a37c-27921a94f233
+label: gpt
+label-id: DE6313AD-5D2D-F949-9D5F-4A288B1136DF
+device: /dev/nvme0n1
+unit: sectors
+first-lba: 2048
+last-lba: 268435422
+sector-size: 512
+
+/dev/nvme0n1p1 : start=        2048, size=   268433375, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4, uuid=E8A1B488-27AF-F143-843D-27C6A80DAA75
+
+--- 20-nvme-data-current.txt ---
+43ffa269d803a22998c8807a6797dc57f096a9452d068bb60eff61a8ebb3fdc4  keep.txt
+d74ac0a903abd6c241a47e7c759dbcd9641268dbab1797077553c919e0233083  my files/preserved.bin
+keep.txt 1000:1000 640 44
+my files/preserved.bin 0:0 644 15
+keep.txt
+c9dd2fb6-23f1-4adc-a37c-27921a94f233
+label: gpt
+label-id: DE6313AD-5D2D-F949-9D5F-4A288B1136DF
+device: /dev/nvme0n1
+unit: sectors
+first-lba: 2048
+last-lba: 268435422
+sector-size: 512
+
+/dev/nvme0n1p1 : start=        2048, size=   268433375, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4, uuid=E8A1B488-27AF-F143-843D-27C6A80DAA75
+
+--- 21-final-bundle-verify22.txt ---
+Previously configured second-disk storage verified; no formatting or migration performed.
+
+--- 23-final-bundle-rerun22.txt ---
+
+Nosana installer — fresh installations only
+1) Keep Docker storage on the OS disk (default)
+2) Set up a spare disk for Docker storage
+Storage choice [1/2, Enter = 1]: 2
+2
+Previously configured second-disk storage verified; no formatting or migration performed.
+Previously configured second-disk storage verified; no formatting or migration performed.
+Docker/containerd already exists. Storage verified; no package upgrades or driver changes will be made.
+
+--- 26-reboot22.txt ---
+0e16ff99-0929-4cea-8b58-154eec0b7b8a
+
+Previously configured second-disk storage verified; no formatting or migration performed.
+
+--- 27-nvme-after-reboot.txt ---
+43ffa269d803a22998c8807a6797dc57f096a9452d068bb60eff61a8ebb3fdc4  keep.txt
+d74ac0a903abd6c241a47e7c759dbcd9641268dbab1797077553c919e0233083  my files/preserved.bin
+keep.txt 1000:1000 640 44
+my files/preserved.bin 0:0 644 15
+keep.txt
+c9dd2fb6-23f1-4adc-a37c-27921a94f233
+label: gpt
+label-id: DE6313AD-5D2D-F949-9D5F-4A288B1136DF
+device: /dev/nvme0n1
+unit: sectors
+first-lba: 2048
+last-lba: 268435422
+sector-size: 512
+
+/dev/nvme0n1p1 : start=        2048, size=   268433375, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4, uuid=E8A1B488-27AF-F143-843D-27C6A80DAA75
+
+--- 29-ubuntu22-disk-absent.txt ---
+Id=docker.service
+ActiveState=inactive
+SubState=dead
+
+Id=containerd.service
+ActiveState=inactive
+SubState=dead
+
+Id=mnt-nosana.mount
+ActiveState=inactive
+SubState=dead
+Nov 14 01:36:05 installer-lab systemd[1]: mnt-nosana.mount: Job mnt-nosana.mount/start timed out.
+Nov 14 01:36:05 installer-lab systemd[1]: Timed out mounting Nosana dedicated Docker storage.
+Nov 14 01:36:05 installer-lab systemd[1]: mnt-nosana.mount: Job mnt-nosana.mount/start failed with result 'timeout'.
+PASS22-OS-booted-runtimes-stopped-no-fallback-data
+
+--- DELIVERED artifact934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d focused final gate ---
+934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d  /home/tester/installer-beta.sh
+Previously configured second-disk storage verified; no formatting or migration performed.
+
+{
+  "ubuntu": "22.04.5",
+  "bundle_sha256": "934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d",
+  "verify_exit": 0,
+  "managed_rerun_exit": 0,
+  "package_state_unchanged": true,
+  "os_baseline_unchanged": true,
+  "volume_sentinel": "ubuntu22-proof",
+  "default_os_roots_absent": true
+}
+
+Nosana installer — fresh installations only
+1) Keep Docker storage on the OS disk (default)
+2) Set up a spare disk for Docker storage
+Storage choice [1/2, Enter = 1]: 2
+2
+Previously configured second-disk storage verified; no formatting or migration performed.
+Previously configured second-disk storage verified; no formatting or migration performed.
+Docker/containerd already exists. Storage verified; no package upgrades or driver changes will be made.
+Both commands exit0. Package-state bytes unchanged, original OS baseline exact, existing container volume sentinel retained, no default OS-disk data roots. VM cleanly stopped afterward.

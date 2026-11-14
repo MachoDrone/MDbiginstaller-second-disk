@@ -1,0 +1,68 @@
+{
+  "date_local": "2026-11-13 America/New_York",
+  "isolation": "QEMU KVM, regular qcow2 files only, localhost-only SSH, no host package installation, block-device passthrough or host service changes",
+  "images": [
+    "Ubuntu 24.04 SHA256 04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94 matches https://cloud-images.ubuntu.com/noble/current/SHA256SUMS",
+    "Ubuntu 22.04 SHA256 f77bc6d59cb8deaa9657095736b5f5003f7705b47055f01823459715c967de6a matches https://cloud-images.ubuntu.com/jammy/current/SHA256SUMS"
+  ],
+  "initial_24_helper_sha256": "e7a47c895fb864047105e989677435334cd494ab049b6b202bd8ca9f4730fcce",
+  "full_22_bundle_sha256": "fb2226d30cfa0e62ae24c2fa67bf13d0fb0f0dd4d647c40862d3c9e45b236b18",
+  "final_bundle_sha256": "934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d",
+  "passed": [
+    "24: OS disk excluded",
+    "24: cancel + wrong confirmation no FS/config changes",
+    "24: blank whole secondary disk setup",
+    "24: real Docker + containerd roots and volume",
+    "24: correct-disk reboot and data survival",
+    "24: absent disk OS boot + no runtime fallback",
+    "24: wrong UUID mounted filesystem refused",
+    "24: missing ownership marker blocks start; restore recovers volume",
+    "22: real NVMe GPT single ext4 partition reuse",
+    "22: existing hashes/owners/modes/symlink/UUID/GPT preserved",
+    "22: full original bundle reached final completion (controller prompt correction documented)",
+    "22: real Docker/containerd + NVIDIA Toolkit JSON merge",
+    "22: final bundle verification and managed rerun exit0; package snapshot unchanged",
+    "22: reboot with both runtimes and volume/existing data retained",
+    "22: absent NVMe disk boots OS and blocks runtimes without fallback",
+    "24: final artifact verify exit0 on managed installation; existing volume and OS invariants retained"
+  ],
+  "os_invariants": {
+    "24_baseline_sha256": "9a2fb483c807248fce8acf8caa20aca99f60898c6798f1f9238918cab49cb713",
+    "22_baseline_sha256": "f47cbab6e6bb1450e9fbd2ab60d94486486d482ec6bd48f7cf522ebea1a04159",
+    "checks": "fstab SHA256, root sentinel SHA256, sfdisk OS partition dump, root filesystem UUID compared exactly after relevant gates"
+  },
+  "limitations": [
+    "No physical GPU or driver installation tested",
+    "No live operator host accessed",
+    "No claim of universal disk/controller or OS-layout compatibility",
+    "Destructive formatting cannot be undone; recovery removes owned config, not filesystem writes",
+    "Pure policy and fault-injection tests reported separately"
+  ],
+  "cleanup": "Final runtime QEMU PIDs2704086 and2704236 both cleanly exited; localhost22292 released. No runtime VM running. Scratch remains until coordinator removes shared files after fault VM stops.",
+  "full_22_helper_sha256": "f63aeb92c00cbcddc955ec29213f95f3e264ca9e788bfd8c8ac70d65ea20fd50",
+  "earlier_verified_bundle_sha256": "68322466cb350d5bc868893330359eb8c2e516396199b166358b2761504893c4",
+  "final_helper_sha256": "15081b5aede08c06b6898e306dc8edfd04d7832d833d4c7ad7e4a42a298079d8",
+  "evidence_reuse": "Exact diff between full22-tested helperf63a and delivered helper15081b5a changes only inventory fstab/crypttab token parsing; every mutating/recovery/guard function is unchanged. See e2e-final-inventory-only.diff; focused parser fixtures and frozen mutation fault matrix are separate evidence.",
+  "final_delivery_checks": [
+    {
+      "ubuntu": "24.04.5",
+      "bundle_sha256": "934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d",
+      "verify_exit": 0,
+      "managed_rerun_exit": 0,
+      "package_state_unchanged": true,
+      "os_baseline_unchanged": true,
+      "volume_sentinel": "second-disk-proof",
+      "default_os_roots_absent": true
+    },
+    {
+      "ubuntu": "22.04.5",
+      "bundle_sha256": "934d7f8ac6fe6ba297f6a2f230afab475ab2a8b2acdf176e68fa6d31d314467d",
+      "verify_exit": 0,
+      "managed_rerun_exit": 0,
+      "package_state_unchanged": true,
+      "os_baseline_unchanged": true,
+      "volume_sentinel": "ubuntu22-proof",
+      "default_os_roots_absent": true
+    }
+  ]
+}
