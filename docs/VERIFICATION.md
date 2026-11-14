@@ -1,8 +1,8 @@
 # Verification record
 
 Date: 2026-11-13, America/New_York. Status: all planned local and disposable-VM
-gates passed, including final artifact verification. Prepared as a private release
-candidate; public visibility requires explicit owner approval.
+gates passed, including final artifact verification. The owner explicitly approved
+public publication of this release candidate on 2026-11-13.
 
 Frozen candidate:
 
@@ -91,10 +91,10 @@ gate, and the final downloadable artifact passed focused lint and verification
 against both retained managed installations and the final fault VM. No passing result is inferred merely
 from a changed test count.
 
-Remote Actions are disabled while the repository is private; no hosted CI run is
-claimed. The same unit/bundle checks and shell lint passed locally/in disposable
-VMs. Public creation was rejected by automatic approval review because the user
-had not explicitly authorized public visibility; private backup is permitted.
+The unit/bundle checks and shell lint also run in the public repository's
+[GitHub Actions workflow](https://github.com/MachoDrone/MDbiginstaller-second-disk/actions/workflows/test.yml).
+The VM evidence above is separate from hosted CI; GitHub runners do not execute
+the destructive VM scenarios.
 
 ## Limits
 
